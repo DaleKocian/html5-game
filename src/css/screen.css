@@ -24,6 +24,8 @@ body {
     display: block;
     background: #ffffff;
     margin: 0 auto;
+    background: url(../img/GameBackground.jpg);
+    background-repeat: no-repeat;
 }
 
 #start-screen, #character-select-screen {
