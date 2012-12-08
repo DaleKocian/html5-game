@@ -24,8 +24,8 @@ var player = {
     color: "#00A",
     x: 50,
     y: 550,
-    width: 39,
-    height: 67,
+    width: 38,
+    height: 53,
     draw: function () {
         canvas.fillStyle = this.color;
         canvas.fillRect(this.x, this.y, this.width, this.height);
@@ -166,8 +166,8 @@ function update() {
         player.x -= 5;
         if (player.oldSprite !== 'player-left') {
             player.sprite = Sprite("player-left");
-            player.width = 67;
-            player.height = 39;
+            player.width = 53;
+            player.height = 38;
             player.oldSprite = 'player-left';
         }
     }
@@ -176,8 +176,8 @@ function update() {
         player.x += 5;
         if (player.oldSprite !== 'player-right') {
             player.sprite = Sprite("player-right");
-            player.width = 67;
-            player.height = 39;
+            player.width = 53;
+            player.height = 38;
             player.oldSprite = 'player-right';
         }
     }
@@ -186,8 +186,8 @@ function update() {
         player.y -= 5;
         if (player.oldSprite !== 'player-up') {
             player.sprite = Sprite("player-up");
-            player.width = 39;
-            player.height = 67;
+            player.width = 38;
+            player.height = 53;
             player.oldSprite = 'player-up';
         }
     }
@@ -196,8 +196,8 @@ function update() {
         player.y += 5;
         if (player.oldSprite !== 'player-down') {
             player.sprite = Sprite("player-down");
-            player.width = 39;
-            player.height = 67;
+            player.width = 38;
+            player.height = 53;
             player.oldSprite = 'player-down';
         }
     }
