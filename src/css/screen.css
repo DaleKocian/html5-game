@@ -31,7 +31,6 @@ body {
 #start-screen, #character-select-screen {
     margin: 100px auto 0;
     z-index: 5;
-    cursor: pointer;
     width: 800px;
     height: 500px;
     background-color: #fff;
@@ -46,6 +45,9 @@ body {
 #character-select-screen h1 {
     text-align: center;
 }
+#character-select-screen img {
+    cursor: pointer;
+}
 #dale {
     float: left;
 }
@@ -57,6 +59,7 @@ body {
     color: #fff;
     text-align: center;
     padding-top: 215px;
+    cursor: pointer;
 }
 
 #start-button:hover {
