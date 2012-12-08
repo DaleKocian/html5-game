@@ -2,6 +2,10 @@ body {
     background: #303030;
 }
 
+#game {
+    display: none;
+}
+
 #lives {
     text-align: center;
     color: #ffffff;
@@ -11,8 +15,7 @@ body {
     text-align: center;
     font-size: 24px;
     color: #ffffff;
-    position: relative;
-    height: 0;
+    margin: 100px auto 0;
 }
 
 #canvasBg {
@@ -20,7 +23,29 @@ body {
     height: 500px;
     display: block;
     background: #ffffff;
+    margin: 0 auto;
+}
+
+#start-screen {
     margin: 100px auto 0;
+    z-index: 5;
+    cursor: pointer;
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    left: 22.2%;
+    top: 16.7%;
     background: url(../img/Post-Apocalyptic-Cityscape.jpg);
     background-repeat: no-repeat;
+}
+
+#start-button {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    padding-top: 215px;
+}
+
+#start-button:hover {
+    color: #ff0000;
 }
