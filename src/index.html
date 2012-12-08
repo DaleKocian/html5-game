@@ -348,6 +348,7 @@ function handleCollisions() {
             if (collides(bullet, enemy)) {
                 enemy.explode();
                 bullet.active = false;
+                updateScore();
             }
         });
     });
@@ -370,6 +371,11 @@ player.oldSprite = PLAYER_UP;
 player.draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
 };
+
+function updateScore(){
+    SCORE++;
+    $('#score').text("Score: " + SCORE);
+}
 //]]>
 </script>
 </body>
