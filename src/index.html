@@ -30,6 +30,7 @@
     </canvas>
     <div class="playerMenuItem" id="score">Score:</div>
     <div class="playerMenuItem" id="lives">Lives:</div>
+    <div class="playerMenuItem" id="health">Health: 100</div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
@@ -62,15 +63,16 @@ var PLAYER_DOWN = "player-down";
 var PLAYER_LEFT = "player-left";
 var PLAYER_RIGHT = "player-right";
 var SCORE = 0;
+var HEALTH = 100;
 
 
 var player = {
-    color: "#00A",
-    x: 50,
-    y: 550,
-    width: 38,
-    height: 53,
-    draw: function () {
+    color:"#00A",
+    x:50,
+    y:550,
+    width:38,
+    height:53,
+    draw:function () {
         canvas.fillStyle = this.color;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     }
@@ -205,6 +207,7 @@ function Enemy(I) {
     return I;
 }
 var refreshIntervalId;
+
 function startGame() {
     refreshIntervalId = setInterval(function () {
         update();
@@ -214,12 +217,14 @@ function startGame() {
 function pauseGame() {
     clearInterval(refreshIntervalId);
 }
+
 function resetGame() {
     clearInterval(refreshIntervalId);
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
 }
+
 function update() {
+
     if (keydown.space) {
         player.shoot();
     }
@@ -262,6 +267,10 @@ function update() {
             player.height = 53;
             player.oldSprite = PLAYER_DOWN;
         }
+
+//        if(keydown.down && keydown.right){
+//
+//        }
     }
 
     player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
@@ -295,32 +304,32 @@ player.shoot = function () {
     var bulletPosition = this.gunPoint(player.oldSprite);
 
     playerBullets.push(Bullet({
-        speed: 5,
-        x: bulletPosition.x,
-        y: bulletPosition.y
+        speed:5,
+        x:bulletPosition.x,
+        y:bulletPosition.y
     }));
 };
 
 player.gunPoint = function (playerPosition) {
     if (playerPosition == PLAYER_UP) {
         return {
-            x: this.x + this.width - 11,
-            y: ( this.y + this.height / 12 ) - 4
+            x:this.x + this.width - 11,
+            y:( this.y + this.height / 12 ) - 4
         };
     } else if (playerPosition == PLAYER_DOWN) {
         return {
-            x: this.x + this.width - 11,
-            y: ( this.y + this.height / 12 ) + 44
+            x:this.x + this.width - 11,
+            y:( this.y + this.height / 12 ) + 44
         };
     } else if (playerPosition == PLAYER_RIGHT) {
         return {
-            x: (this.x + this.width / 2) + 24,
-            y: (this.y + this.height / 2) + 8
+            x:(this.x + this.width / 2) + 24,
+            y:(this.y + this.height / 2) + 8
         };
     } else if (playerPosition == PLAYER_LEFT) {
         return {
-            x: (this.x + this.width / 2) - 26,
-            y: (this.y + this.height / 2) + 8
+            x:(this.x + this.width / 2) - 26,
+            y:(this.y + this.height / 2) + 8
         };
     }
 };
@@ -360,6 +369,7 @@ function handleCollisions() {
         if (collides(enemy, player)) {
             enemy.explode();
             player.explode();
+            reduceHealth();
         }
     });
 }
@@ -379,6 +389,11 @@ function updateScore() {
     SCORE++;
     $('#score').text("Score: " + SCORE);
 }
+function reduceHealth() {
+    HEALTH--;
+    $('#health').text("Health: " + HEALTH)
+}
+
 $('#resume-pause').toggle(function () {
     pauseGame();
     $(this).text('Resume');
