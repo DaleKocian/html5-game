@@ -12,7 +12,7 @@ body {
     font-size: 24px;
     color: #ffffff;
     position: relative;
-    height: 0px;
+    height: 0;
 }
 
 #canvasBg {
@@ -20,6 +20,5 @@ body {
     height: 500px;
     display: block;
     background: #ffffff;
-    margin: 100px auto 0px;
-    /*lk*/
+    margin: 100px auto 0;
 }
