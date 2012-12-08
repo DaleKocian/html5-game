@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <title>SADC WAR Demo</title>
+    <title>Space Demo</title>
     <link href="stylesheets/screen.css" media="all" rel="stylesheet" type="text/css"/>
     <script language="javascript"
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
@@ -19,14 +19,19 @@
 var CANVAS_WIDTH = 960;
 var CANVAS_HEIGHT = 640;
 var FPS = 30;
+var PLAYER_UP = "player-up";
+var PLAYER_DOWN = "player-down";
+var PLAYER_LEFT = "player-left";
+var PLAYER_RIGHT = "player-right";
+
 
 var player = {
-    color: "#00A",
-    x: 50,
-    y: 550,
-    width: 38,
-    height: 53,
-    draw: function () {
+    color:"#00A",
+    x:50,
+    y:550,
+    width:38,
+    height:53,
+    draw:function () {
         canvas.fillStyle = this.color;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     }
@@ -36,9 +41,7 @@ var playerBullets = [];
 
 function Bullet(I) {
     I.active = true;
-
-    I.xVelocity = 0;
-    I.yVelocity = -I.speed;
+    determineBulletDirection(I, player.oldSprite);
     I.width = 3;
     I.height = 3;
     I.color = "#000";
@@ -68,13 +71,29 @@ function Bullet(I) {
     return I;
 }
 
+function determineBulletDirection(I, playerPosition) {
+    if (playerPosition == PLAYER_UP) {
+        I.xVelocity = 0;
+        I.yVelocity = -I.speed;
+    } else if (playerPosition == PLAYER_DOWN) {
+        I.xVelocity = 0;
+        I.yVelocity = I.speed;
+    } else if (playerPosition == PLAYER_LEFT) {
+        I.xVelocity = -I.speed;
+        I.yVelocity = 0;
+    } else if (playerPosition == PLAYER_RIGHT) {
+        I.xVelocity = I.speed;
+        I.yVelocity = 0;
+    }
+}
+
 enemies = [];
 
 function setEnemyStartingPoint(I) {
     var r = Math.floor(Math.random() * 4) + 1;
     I.x = CANVAS_WIDTH / 4 + Math.random() * CANVAS_WIDTH / 2;
     I.y = CANVAS_HEIGHT / 4 + Math.random() * CANVAS_HEIGHT / 2;
-    switch(r) {
+    switch (r) {
         case 1:
             I.y = 0;
             break;
@@ -164,41 +183,41 @@ function update() {
 
     if (keydown.left) {
         player.x -= 5;
-        if (player.oldSprite !== 'player-left') {
-            player.sprite = Sprite("player-left");
+        if (player.oldSprite !== PLAYER_LEFT) {
+            player.sprite = Sprite(PLAYER_LEFT);
             player.width = 53;
             player.height = 38;
-            player.oldSprite = 'player-left';
+            player.oldSprite = PLAYER_LEFT;
         }
     }
 
     if (keydown.right) {
         player.x += 5;
-        if (player.oldSprite !== 'player-right') {
-            player.sprite = Sprite("player-right");
+        if (player.oldSprite !== PLAYER_RIGHT) {
+            player.sprite = Sprite(PLAYER_RIGHT);
             player.width = 53;
             player.height = 38;
-            player.oldSprite = 'player-right';
+            player.oldSprite = PLAYER_RIGHT;
         }
     }
 
     if (keydown.up) {
         player.y -= 5;
-        if (player.oldSprite !== 'player-up') {
-            player.sprite = Sprite("player-up");
+        if (player.oldSprite !== PLAYER_UP) {
+            player.sprite = Sprite(PLAYER_UP);
             player.width = 38;
             player.height = 53;
-            player.oldSprite = 'player-up';
+            player.oldSprite = PLAYER_UP;
         }
     }
 
     if (keydown.down) {
         player.y += 5;
-        if (player.oldSprite !== 'player-down') {
-            player.sprite = Sprite("player-down");
+        if (player.oldSprite !== PLAYER_DOWN) {
+            player.sprite = Sprite(PLAYER_DOWN);
             player.width = 38;
             player.height = 53;
-            player.oldSprite = 'player-down';
+            player.oldSprite = PLAYER_DOWN;
         }
     }
 
@@ -230,20 +249,37 @@ function update() {
 player.shoot = function () {
     Sound.play("shoot");
 
-    var bulletPosition = this.midpoint();
+    var bulletPosition = this.gunPoint(player.oldSprite);
 
     playerBullets.push(Bullet({
-        speed: 5,
-        x: bulletPosition.x,
-        y: bulletPosition.y
+        speed:5,
+        x:bulletPosition.x,
+        y:bulletPosition.y
     }));
 };
 
-player.midpoint = function () {
-    return {
-        x: this.x + this.width / 2,
-        y: this.y + this.height / 2
-    };
+player.gunPoint = function (playerPosition) {
+    if (playerPosition == PLAYER_UP) {
+        return {
+            x:this.x + this.width / .5,
+            y:this.y + this.height / 2
+        };
+    } else if (playerPosition == PLAYER_DOWN) {
+        return {
+            x:this.width - this.width / 2,
+            y:this.y - this.height / 2
+        };
+    } else if (playerPosition == PLAYER_RIGHT) {
+        return {
+            x:this.x + this.width / 2,
+            y:this.y + this.height / 2
+        };
+    } else if (playerPosition == PLAYER_LEFT) {
+        return {
+            x:this.x + this.width / 2,
+            y:this.y + this.height / 2
+        };
+    }
 };
 
 function draw() {
@@ -289,8 +325,8 @@ player.explode = function () {
     // Extra Credit: Add an explosion graphic and then end the game
 };
 
-player.sprite = Sprite("player-up");
-player.oldSprite = "player-up";
+player.sprite = Sprite(PLAYER_UP);
+player.oldSprite = PLAYER_UP;
 player.draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
 };
