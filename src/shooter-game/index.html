@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>Space Demo</title>
-    <link href="/stylesheets/screen.css" media="all" rel="stylesheet" type="text/css"/>
-    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"
-            type="text/javascript"></script>
+    <link href="stylesheets/screen.css" media="all" rel="stylesheet" type="text/css"/>
+    <script language="javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
     <script language="javascript" src="javascripts/jquery.hotkeys.js" type="text/javascript"></script>
     <script language="javascript" src="javascripts/key_status.js" type="text/javascript"></script>
     <script language="javascript" src="javascripts/util.js" type="text/javascript"></script>
@@ -70,6 +70,27 @@ function Bullet(I) {
 
 enemies = [];
 
+function setEnemyStartingPoint(I) {
+    var r = Math.floor(Math.random() * 4) + 1;
+    I.x = CANVAS_WIDTH / 4 + Math.random() * CANVAS_WIDTH / 2;
+    I.y = CANVAS_HEIGHT / 4 + Math.random() * CANVAS_HEIGHT / 2;
+    switch(r) {
+        case 1:
+            I.y = 0;
+            break;
+        case 2:
+            I.x = 0;
+            break;
+        case 3:
+            I.x = CANVAS_WIDTH;
+            break;
+        default:
+            I.y = CANVAS_HEIGHT;
+            break
+    }
+    return I;
+}
+
 function Enemy(I) {
     I = I || {};
 
@@ -78,9 +99,9 @@ function Enemy(I) {
 
     I.color = "#A2B";
 
-    I.x = CANVAS_WIDTH / 4 + Math.random() * CANVAS_WIDTH / 2;
-    I.y = 0;
-    I.xVelocity = 0
+    setEnemyStartingPoint(I);
+
+    I.xVelocity = 0;
     I.yVelocity = 2;
 
     I.width = 32;
@@ -98,8 +119,16 @@ function Enemy(I) {
     };
 
     I.update = function () {
-        I.x += I.xVelocity;
-        I.y += I.yVelocity;
+        if (I.x > player.x) {
+            --I.x;
+        } else if (I.x < player.x) {
+            ++I.x;
+        }
+        if (I.y > player.y) {
+            --I.y;
+        } else if (I.y < player.y) {
+            ++I.y;
+        }
 
         I.xVelocity = 3 * Math.sin(I.age * Math.PI / 64);
 
@@ -117,7 +146,6 @@ function Enemy(I) {
 
     return I;
 }
-;
 
 var canvasElement = $("<canvas width='" + CANVAS_WIDTH +
         "' height='" + CANVAS_HEIGHT + "'></canvas");
@@ -136,22 +164,10 @@ function update() {
 
     if (keydown.left) {
         player.x -= 5;
-        player.sprite = Sprite("player-left");
     }
 
     if (keydown.right) {
         player.x += 5;
-        player.sprite = Sprite("player-right");
-    }
-
-    if (keydown.up) {
-        player.y -= 5;
-        player.sprite = Sprite("player-up");
-    }
-
-    if (keydown.down) {
-        player.y += 5;
-        player.sprite = Sprite("player-down");
     }
 
     player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
@@ -241,7 +257,7 @@ player.explode = function () {
     // Extra Credit: Add an explosion graphic and then end the game
 };
 
-player.sprite = Sprite("player-up");
+player.sprite = Sprite("player");
 
 player.draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
