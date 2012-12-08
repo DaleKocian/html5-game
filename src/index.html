@@ -199,11 +199,6 @@ function Enemy(I) {
 
     return I;
 }
-
-var canvasElement = $("<canvas width='" + CANVAS_WIDTH +
-        "' height='" + CANVAS_HEIGHT + "'></canvas");
-var canvas = canvasElement.get(0).getContext("2d");
-canvasElement.appendTo('body');
 var refreshIntervalId;
 function startGame() {
     refreshIntervalId = setInterval(function () {
