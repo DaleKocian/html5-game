@@ -12,6 +12,15 @@
         Start Game
     </div>
 </div>
+<div id="character-select-screen">
+    <h1>Select Your Character</h1>
+    <div id="dale">
+        <img src="img/dale.png" />
+    </div>
+    <div id="triest">
+        <img src="img/triest.png" />
+    </div>
+</div>
 <div id="game">
     <div id="wave">Wave 1</div>
     <canvas id="canvasBg">
@@ -25,7 +34,11 @@
     var CANVAS_HEIGHT = canvasElement.height();
     $('#start-button').on('click', function() {
         $(this).parent().hide("slow");
-        $('#game').show("slow");
+        $('#character-select-screen').show("slow");
+    });
+    $('#dale img, #triest img').on('click', function() {
+        $('#character-select-screen').hide('slow');
+        $('#game').show('slow');
     });
 </script>
 </body>

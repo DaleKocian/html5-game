@@ -26,19 +26,30 @@ body {
     margin: 0 auto;
 }
 
-#start-screen {
+#start-screen, #character-select-screen {
     margin: 100px auto 0;
     z-index: 5;
     cursor: pointer;
     width: 800px;
     height: 500px;
     background-color: #fff;
-    left: 22.2%;
-    top: 16.7%;
+}
+#start-screen {
     background: url(../img/Post-Apocalyptic-Cityscape.jpg);
     background-repeat: no-repeat;
 }
-
+#character-select-screen {
+    display: none;
+}
+#character-select-screen h1 {
+    text-align: center;
+}
+#dale {
+    float: left;
+}
+#triest {
+    float: right;
+}
 #start-button {
     font-size: 40px;
     color: #fff;
