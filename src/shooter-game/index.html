@@ -164,10 +164,22 @@ function update() {
 
     if (keydown.left) {
         player.x -= 5;
+        player.sprite = Sprite("player-left");
     }
 
     if (keydown.right) {
         player.x += 5;
+        player.sprite = Sprite("player-right");
+    }
+
+    if (keydown.up) {
+        player.y -= 5;
+        player.sprite = Sprite("player-up");
+    }
+
+    if (keydown.down) {
+        player.y += 5;
+        player.sprite = Sprite("player-down");
     }
 
     player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
@@ -257,7 +269,7 @@ player.explode = function () {
     // Extra Credit: Add an explosion graphic and then end the game
 };
 
-player.sprite = Sprite("player");
+player.sprite = Sprite("player-up");
 
 player.draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
