@@ -1,0 +1,24 @@
+body {
+    background: #303030;
+}
+
+#lives {
+    text-align: center;
+    color: #ffffff;
+}
+
+#wave {
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    position: relative;
+    height: 0px;
+}
+
+#canvasBg {
+    width: 800px;
+    height: 500px;
+    display: block;
+    background: #ffffff;
+    margin: 100px auto 0px;
+}
