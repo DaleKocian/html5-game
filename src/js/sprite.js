@@ -62,7 +62,7 @@
     return proxy;
   };
  
-  var spriteImagePath = "images/";
+  var spriteImagePath = "img/";
 
   window.Sprite = function(name, callback) {
     return Sprite.load(spriteImagePath + name + ".png", callback);
