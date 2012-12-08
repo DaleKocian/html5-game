@@ -11,6 +11,12 @@
 <div id="wave">Wave 1</div>
 <canvas id="canvasBg"></canvas>
 <div id="lives">Lives:</div>
+<script type="text/javascript">
+    var canvasElement = $('#canvasBg');
+    var canvas = canvasElement.get(0).getContext("2d");
+    var CANVAS_WIDTH = canvasElement.width();
+    var CANVAS_HEIGHT = canvasElement.height();
+</script>
 </body>
 </html>
 
