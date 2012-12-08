@@ -14,12 +14,8 @@
 </div>
 <div id="character-select-screen">
     <h1>Select Your Character</h1>
-    <div id="dale">
-        <img src="img/dale.png" />
-    </div>
-    <div id="triest">
-        <img src="img/triest.png" />
-    </div>
+    <img id="dale" src="img/dale.png" />
+    <img id="triest" src="img/triest.png" />
 </div>
 <div id="game">
     <div id="wave">Wave 1</div>
@@ -36,7 +32,16 @@
         $(this).parent().hide("slow");
         $('#character-select-screen').show("slow");
     });
-    $('#dale img, #triest img').on('click', function() {
+    $('#dale, #triest').on('click', function() {
+        var id = $(this).prop('id');
+        switch(id) {
+            case 'dale':
+                console.log('You selected Dale!');
+                break;
+            case 'triest':
+                console.log('You selected Triest!');
+                break;
+        }
         $('#character-select-screen').hide('slow');
         $('#game').show('slow');
     });
