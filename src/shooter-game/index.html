@@ -164,22 +164,34 @@ function update() {
 
     if (keydown.left) {
         player.x -= 5;
-        player.sprite = Sprite("player-left");
+        if (player.oldSprite !== 'player-left') {
+            player.sprite = Sprite("player-left");
+            player.oldSprite = 'player-left';
+        }
     }
 
     if (keydown.right) {
         player.x += 5;
-        player.sprite = Sprite("player-right");
+        if (player.oldSprite !== 'player-right') {
+            player.sprite = Sprite("player-right");
+            player.oldSprite = 'player-right';
+        }
     }
 
     if (keydown.up) {
         player.y -= 5;
-        player.sprite = Sprite("player-up");
+        if (player.oldSprite !== 'player-up') {
+            player.sprite = Sprite("player-up");
+            player.oldSprite = 'player-up';
+        }
     }
 
     if (keydown.down) {
         player.y += 5;
-        player.sprite = Sprite("player-down");
+        if (player.oldSprite !== 'player-down') {
+            player.sprite = Sprite("player-down");
+            player.oldSprite = 'player-down';
+        }
     }
 
     player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
@@ -271,7 +283,7 @@ player.explode = function () {
 };
 
 player.sprite = Sprite("player-up");
-
+player.oldSprite = "player-up";
 player.draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
 };
