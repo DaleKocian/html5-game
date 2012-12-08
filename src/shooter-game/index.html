@@ -261,23 +261,23 @@ player.shoot = function () {
 player.gunPoint = function (playerPosition) {
     if (playerPosition == PLAYER_UP) {
         return {
-            x:this.x + this.width / .5,
-            y:this.y + this.height / 2
+            x:this.x + this.width - 11,
+            y:( this.y + this.height / 12 ) - 4
         };
     } else if (playerPosition == PLAYER_DOWN) {
         return {
-            x:this.width - this.width / 2,
-            y:this.y - this.height / 2
+            x:this.x + this.width - 11,
+            y:( this.y + this.height / 12 ) + 44
         };
     } else if (playerPosition == PLAYER_RIGHT) {
         return {
-            x:this.x + this.width / 2,
-            y:this.y + this.height / 2
+            x:(this.x + this.width / 2) + 24,
+            y:(this.y + this.height / 2) + 8
         };
     } else if (playerPosition == PLAYER_LEFT) {
         return {
-            x:this.x + this.width / 2,
-            y:this.y + this.height / 2
+            x:(this.x + this.width / 2) - 26,
+            y:(this.y + this.height / 2) + 8
         };
     }
 };
