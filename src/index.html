@@ -204,11 +204,20 @@ var canvasElement = $("<canvas width='" + CANVAS_WIDTH +
         "' height='" + CANVAS_HEIGHT + "'></canvas");
 var canvas = canvasElement.get(0).getContext("2d");
 canvasElement.appendTo('body');
+var refreshIntervalId;
 function startGame() {
-    setInterval(function () {
+    refreshIntervalId = setInterval(function () {
         update();
         draw();
     }, 1000 / FPS);
+}
+function pauseGame() {
+    clearInterval(refreshIntervalId);
+}
+function resetGame() {
+    clearInterval(refreshIntervalId);
+    canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
 }
 function update() {
     if (keydown.space) {
