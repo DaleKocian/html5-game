@@ -4,8 +4,15 @@ body {
 
 #game {
     display: none;
+    width: 1270px;
+    margin: 0 auto;
 }
-
+#resume-pause {
+    float: right;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
 .playerMenuItem {
     text-align: center;
     color: #ffffff;
