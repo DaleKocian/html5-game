@@ -50,8 +50,8 @@ $('#dale, #triest').on('click', function () {
 
 var canvasElement = $('#canvasBg');
 var canvas = canvasElement.get(0).getContext("2d");
-var CANVAS_WIDTH = 800;
-var CANVAS_HEIGHT = 500;
+var CANVAS_WIDTH = canvasElement.attr('width');
+var CANVAS_HEIGHT = canvasElement.attr('height');
 var FPS = 30;
 var PLAYER_UP = "player-up";
 var PLAYER_DOWN = "player-down";
