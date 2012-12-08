@@ -23,7 +23,7 @@
 </div>
 <div id="game">
     <div id="wave">Wave 1</div>
-    <canvas id="canvasBg">
+    <canvas id="canvasBg" width="800" height="500">
     </canvas>
     <div id="lives">Lives:</div>
 </div>
@@ -50,8 +50,8 @@ $('#dale, #triest').on('click', function () {
 
 var canvasElement = $('#canvasBg');
 var canvas = canvasElement.get(0).getContext("2d");
-var CANVAS_WIDTH = canvasElement.width();
-var CANVAS_HEIGHT = canvasElement.height();
+var CANVAS_WIDTH = 800;
+var CANVAS_HEIGHT = 500;
 var FPS = 30;
 var PLAYER_UP = "player-up";
 var PLAYER_DOWN = "player-down";
