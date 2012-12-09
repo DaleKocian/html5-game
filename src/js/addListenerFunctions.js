@@ -1,5 +1,6 @@
 function addStartScreenButtonListener() {
     $('#start-button').on('click', function () {
+		playTitleMusic();
         saveGame();
         $(this).closest('#start-screen').hide('slow');
         $('#character-select-screen').show('slow');
@@ -14,6 +15,7 @@ function addStartScreenButtonListener() {
 function addCharacterSelectListener() {
     $('#dale, #triest, #leon').on('click', function () {
         var id = $(this).prop('id');
+		stopTitleMusic();
         switch (id) {
             case 'dale':
                 console.log('You selected Dale!');

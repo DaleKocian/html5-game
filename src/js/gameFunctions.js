@@ -171,3 +171,11 @@ function draw() {
         enemy.draw();
     });
 }
+
+function playTitleMusic(){
+   Sound.play("titleScreenMusic");
+}
+
+function stopTitleMusic(){
+	Sound.stop("titleScreenMusic");
+}
