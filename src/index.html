@@ -273,6 +273,8 @@ function update() {
 //        }
     }
 
+
+
     player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
     player.y = player.y.clamp(20, CANVAS_HEIGHT - player.height);
 
@@ -402,6 +404,18 @@ $('#resume-pause').toggle(function () {
 }, function () {
     startGame();
     $(this).text('Pause');
+});
+$('body').keypress(function() {
+    if (keydown.p) {
+        var $el = $('#resume-pause');
+        if ($el.text() === 'Resume') {
+            startGame();
+            $el.text('Pause');
+        } else {
+            pauseGame();
+            $el.text('Resume');
+        }
+    }
 });
 //]]>
 </script>
