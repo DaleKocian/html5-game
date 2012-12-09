@@ -6,7 +6,7 @@ function addStartScreenButtonListener() {
     });
     $('#continue-button').on('click', function () {
         saveGame();
-        setSavedGameSettings;
+        setSavedGameSettings();
         $(this).closest('#start-screen').hide('slow');
         $('#game').show('slow');
         setupVarsAndGameBar();

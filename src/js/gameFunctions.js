@@ -36,21 +36,21 @@ function isStorageExistingAndNotFirstLevel() {
 }
 
 function updateWave() {
-    $('#wave span').text(++currentWave);
+    $('#wave').find('span').text(++currentWave);
 }
 
 function updateScore() {
-    $('#score span').text(++score);
+    $('#score').find('span').text(++score);
 }
 
 function reduceHealth() {
     if (health > 0) {
-        $('#health span').text(--health);
+        $('#health').find('span').text(--health);
     }
 }
 
 function increaseHealth() {
-    $('#health span').text(++health);
+    $('#health').find('span').text(++health);
 }
 
 function getWaveCount() {
@@ -78,10 +78,10 @@ function setupVarsAndGameBar() {
     canvas = canvasElement.get(0).getContext('2d');
     CANVAS_WIDTH = canvasElement.attr('width');
     CANVAS_HEIGHT = canvasElement.attr('height');
-    $('#lives span').text(lives);
-    $('#score span').text(score);
-    $('#health span').text(health);
-    $('#wave span').text(currentWave);
+    $('#lives').find('span').text(lives);
+    $('#score').find('span').text(score);
+    $('#health').find('span').text(health);
+    $('#wave').find('span').text(currentWave);
 }
 
 function setZombieSwarmCoefficient() {
