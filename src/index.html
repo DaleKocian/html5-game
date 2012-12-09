@@ -271,9 +271,9 @@ function handleCollisions() {
             <!--end the game at 0 lives and show game over screen-->
             if (HEALTH == 0) {
                 resetGame();
-                $('#character-select-screen').hide('fast');
-                $('#game').hide('fast');
-                $('#gameOver').show('fast');
+                $('#character-select-screen').hide();
+                $('#game').hide();
+                $('#gameOver').show();
             }
         }
     });
