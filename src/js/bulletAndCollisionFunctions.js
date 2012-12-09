@@ -72,12 +72,11 @@ function handleCollisions() {
             reduceHealth();
             <!--end the game at 0 lives and show game over screen-->
             if (health < 1) {
+                reduceLives();
                 if (lives < 1) {
                     resetGame();
                     $('#game').hide();
                     $('#gameOver').show();
-                } else {
-                    reduceLives();
                 }
             }
             --zombiesToKill;
