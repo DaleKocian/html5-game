@@ -4,7 +4,7 @@ var DALES_BIO = 'THE WARRIOR IS THE LOYAL SOLDIER, THE MAN THAT STANDS UP FOR WH
     'BUT HE DOESN\'T LET HIS PERSONAL LIFE GET IN THE WAY OF HIS MISSION. THE WARRIOR IS OFTEN A HERO IN THE ' +
     'MAKING ON THE VERGE OF DOING SOMETHING GREAT, A WARRIOR IS MISS UNDERSTOOD AT TIMES BUT HE ALWAYS PULLS THREW.'
 var LEONS_BIO = 'The paladin calls upon his holy light to heal the wounds of himself and others.';
-var TRIEST_BIO = 'he Warrior King was an Eternal Champion sword and sorcery character.';
+var TRIEST_BIO = 'The Warrior King was an Eternal Champion sword and sorcery character.';
 var PLAYER_UP = 'player-up';
 var PLAYER_DOWN = 'player-down';
 var PLAYER_LEFT = 'player-left';
