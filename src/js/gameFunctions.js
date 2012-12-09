@@ -70,7 +70,8 @@ function reduceLives() {
 }
 
 function increaseHealth() {
-    $('#health').find('span').text(++health);
+    health += 4;
+    $('#health').find('span').text(health);
 }
 
 function getWaveCount() {
