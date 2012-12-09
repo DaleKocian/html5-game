@@ -14,6 +14,10 @@ function resetGame() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
 
+function updateWave() {
+    $('#wave span').text(++CURRENT_WAVE);
+}
+
 function updateScore() {
     $('#score span').text(++SCORE);
 }
@@ -32,6 +36,7 @@ function setupVarsAndGameBar() {
     $('#lives span').text(LIVES);
     $('#score span').text(SCORE);
     $('#health span').text(HEALTH);
+    $('#wave span').text(CURRENT_WAVE);
 }
 
 function Bullet(enemy) {
@@ -116,8 +121,8 @@ function Enemy(enemy) {
     enemy.xVelocity = 0;
     enemy.yVelocity = 2;
 
-    enemy.width = 32;
-    enemy.height = 75;
+    enemy.width = ENEMY_WIDTH;
+    enemy.height = ENEMY_HEIGHT;
 
     enemy.inBounds = function () {
         return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&

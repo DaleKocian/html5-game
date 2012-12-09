@@ -15,17 +15,23 @@ var canvasElement;
 var canvas;
 var CANVAS_WIDTH;
 var CANVAS_HEIGHT;
-var WAVE = 'Wave ';
+var ENEMY_WIDTH = 32;
+var ENEMY_HEIGHT = 75;
+var PLAYER_WIDTH = 38;
+var PLAYER_HEIGHT = 53;
+var PLAYER_START_X = 635;
+var PLAYER_START_Y = 343.5;
+var CURRENT_WAVE = 1;
 var WAVE_1_COUNT = 50;
 var WAVE_2_COUNT = 75;
 var WAVE_3_COUNT = 125;
 var enemyWaveCount;
 var player = {
     color:"#00A",
-    x:635,
-    y:343.5,
-    width:38,
-    height:53,
+    x:PLAYER_START_X,
+    y:PLAYER_START_Y,
+    width:PLAYER_WIDTH,
+    height:PLAYER_HEIGHT,
     prevSpriteName:null,
     sprite:null,
     draw:function () {
