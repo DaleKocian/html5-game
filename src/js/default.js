@@ -21,4 +21,23 @@ $(function() {
         $('#game').show('slow');
         startGame()
     });
+    $('#resume-pause').toggle(function () {
+        pauseGame();
+        $(this).text('Resume');
+    }, function () {
+        startGame();
+        $(this).text('Pause');
+    });
+    $('body').keypress(function () {
+        if (keydown.p) {
+            var $el = $('#resume-pause');
+            if ($el.text() === 'Resume') {
+                startGame();
+                $el.text('Pause');
+            } else {
+                pauseGame();
+                $el.text('Resume');
+            }
+        }
+    });
 });

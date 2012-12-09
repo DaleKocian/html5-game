@@ -7,12 +7,22 @@ body {
     width: 1270px;
     margin: 0 auto;
 }
+
+#gameOver {
+    width: 736px;
+    height: 518px;
+    display: none;
+    margin: 0 auto;
+    background: url(../img/arsenalGameOver.png);
+}
+
 #resume-pause {
     float: right;
     cursor: pointer;
     color: #fff;
     font-weight: bold;
 }
+
 .playerMenuItem {
     text-align: center;
     color: #ffffff;
@@ -34,31 +44,42 @@ body {
 }
 
 #start-screen, #character-select-screen {
-    margin: 100px auto 0;
+    margin: 0 auto;
     z-index: 5;
     width: 800px;
     height: 500px;
     background-color: #fff;
 }
+
+#character-select-screen {
+
+}
+
 #start-screen {
     background: url(../img/Post-Apocalyptic-Cityscape.jpg);
     background-repeat: no-repeat;
 }
+
 #character-select-screen {
     display: none;
 }
+
 #character-select-screen h1 {
     text-align: center;
 }
+
 #character-select-screen img {
     cursor: pointer;
 }
+
 #dale {
     float: left;
 }
+
 #triest {
     float: right;
 }
+
 #start-button {
     font-size: 40px;
     color: #fff;

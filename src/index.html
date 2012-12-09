@@ -19,6 +19,8 @@
         Start Game
     </div>
 </div>
+<div id="gameOver">
+</div>
 <div id="character-select-screen">
     <h1>Select Your Character</h1>
     <img id="dale" src="img/dale.png"/>
@@ -33,12 +35,11 @@
     </canvas>
     <div class="playerMenuItem" id="score">Score:</div>
     <div class="playerMenuItem" id="lives">Lives:</div>
-    <div class="playerMenuItem" id="health">Health: 10</div>
+    <div class="playerMenuItem" id="health">Health: 1</div>
+    <!--TODO: change to 10-->
 </div>
 <script type="text/javascript">
 //<![CDATA[
-
-
 function Bullet(I) {
     I.active = true;
     determineBulletDirection(I, player.prevSpriteName);
@@ -194,7 +195,7 @@ function update() {
     if (keydown.up) {
         player.y -= 5;
         if (player.prevSpriteName !== PLAYER_UP && !STRAFE_MODE) {
-            player.setSprite(Sprite(PLAYER_UP)).setWidth(35).setHeight(53).setPreviousSpriteName(PLAYER_UP);
+            player.setSprite(Sprite(PLAYER_UP)).setWidth(38).setHeight(53).setPreviousSpriteName(PLAYER_UP);
         }
     }
 
@@ -230,42 +231,6 @@ function update() {
         enemies.push(Enemy());
     }
 }
-
-player.shoot = function () {
-    Sound.play("shoot");
-
-    var bulletPosition = this.gunPoint(player.oldSprite);
-
-    playerBullets.push(Bullet({
-        speed:5,
-        x:bulletPosition.x,
-        y:bulletPosition.y
-    }));
-};
-
-player.gunPoint = function (playerPosition) {
-    if (playerPosition == PLAYER_UP) {
-        return {
-            x:this.x + this.width - 11,
-            y:( this.y + this.height / 12 ) - 4
-        };
-    } else if (playerPosition == PLAYER_DOWN) {
-        return {
-            x:this.x + this.width - 11,
-            y:( this.y + this.height / 12 ) + 44
-        };
-    } else if (playerPosition == PLAYER_RIGHT) {
-        return {
-            x:(this.x + this.width / 2) + 24,
-            y:(this.y + this.height / 2) + 8
-        };
-    } else if (playerPosition == PLAYER_LEFT) {
-        return {
-            x:(this.x + this.width / 2) - 26,
-            y:(this.y + this.height / 2) + 8
-        };
-    }
-};
 
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -303,40 +268,55 @@ function handleCollisions() {
             enemy.explode();
             player.explode();
             reduceHealth();
+            <!--end the game at 0 lives and show game over screen-->
+            if (HEALTH == 0) {
+                resetGame();
+                $('#character-select-screen').hide();
+                $('#game').hide();
+                $('#gameOver').show();
+            }
         }
     });
 }
+
+player.shoot = function () {
+    Sound.play("shoot");
+
+    var bulletPosition = this.gunPoint(player.prevSpriteName);
+
+    playerBullets.push(Bullet({
+        speed:5,
+        x:bulletPosition.x,
+        y:bulletPosition.y
+    }));
+};
+
+player.gunPoint = function (playerPosition) {
+    var x = this.x + this.width - 11;
+    var y = (this.y + this.height / 2) + 8;
+    if (playerPosition === PLAYER_UP) {
+        y = ( this.y + this.height / 12 ) - 4;
+    } else if (playerPosition === PLAYER_DOWN) {
+        y = ( this.y + this.height / 12 ) + 44;
+    } else if (playerPosition === PLAYER_RIGHT) {
+        x = (this.x + this.width / 2) + 24;
+    } else if (playerPosition === PLAYER_LEFT) {
+        x = (this.x + this.width / 2) - 26;
+    }
+    return {
+        x: x,
+        y: y
+    }
+};
 
 player.explode = function () {
     this.active = false;
     // Extra Credit: Add an explosion graphic and then end the game
 };
 
-player.sprite = Sprite(PLAYER_UP);
-player.oldSprite = PLAYER_UP;
-player.draw = function () {
+player.setSprite(Sprite(PLAYER_UP)).setPreviousSpriteName(PLAYER_UP).draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
 };
-
-$('#resume-pause').toggle(function () {
-    pauseGame();
-    $(this).text('Resume');
-}, function () {
-    startGame();
-    $(this).text('Pause');
-});
-$('body').keypress(function () {
-    if (keydown.p) {
-        var $el = $('#resume-pause');
-        if ($el.text() === 'Resume') {
-            startGame();
-            $el.text('Pause');
-        } else {
-            pauseGame();
-            $el.text('Resume');
-        }
-    }
-});
 //]]>
 </script>
 </body>
