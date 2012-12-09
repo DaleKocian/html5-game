@@ -98,11 +98,19 @@ body {
     color: #ff0000;
 }
 #charcterTable div {
-    padding-top: 90px;
+    padding-top: 68px;
 }
 .arrow {
     width: 128px;
     height: 277px;
-    background: url(../img/arrow.png) no-repeat 100% 0%;
+    background: url(../img/arrow.png) no-repeat 90% 0%;
     margin: 0 auto;
+}
+#playerInfo {
+    width: 800px;
+    height: 106px;
+    color: #006600;
+    margin: 0 auto;
+    font-family: Courier;
+    font-weight: bold;
 }
