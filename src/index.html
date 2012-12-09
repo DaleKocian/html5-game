@@ -37,8 +37,6 @@
 </div>
 <script type="text/javascript">
 //<![CDATA[
-
-
 function Bullet(I) {
     I.active = true;
     determineBulletDirection(I, player.prevSpriteName);
@@ -231,42 +229,6 @@ function update() {
     }
 }
 
-player.shoot = function () {
-    Sound.play("shoot");
-
-    var bulletPosition = this.gunPoint(player.oldSprite);
-
-    playerBullets.push(Bullet({
-        speed:5,
-        x:bulletPosition.x,
-        y:bulletPosition.y
-    }));
-};
-
-player.gunPoint = function (playerPosition) {
-    if (playerPosition == PLAYER_UP) {
-        return {
-            x:this.x + this.width - 11,
-            y:( this.y + this.height / 12 ) - 4
-        };
-    } else if (playerPosition == PLAYER_DOWN) {
-        return {
-            x:this.x + this.width - 11,
-            y:( this.y + this.height / 12 ) + 44
-        };
-    } else if (playerPosition == PLAYER_RIGHT) {
-        return {
-            x:(this.x + this.width / 2) + 24,
-            y:(this.y + this.height / 2) + 8
-        };
-    } else if (playerPosition == PLAYER_LEFT) {
-        return {
-            x:(this.x + this.width / 2) - 26,
-            y:(this.y + this.height / 2) + 8
-        };
-    }
-};
-
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
@@ -307,36 +269,50 @@ function handleCollisions() {
     });
 }
 
+player.shoot = function () {
+    Sound.play("shoot");
+
+    var bulletPosition = this.gunPoint(player.prevSpriteName);
+
+    playerBullets.push(Bullet({
+        speed:5,
+        x:bulletPosition.x,
+        y:bulletPosition.y
+    }));
+};
+
+player.gunPoint = function (playerPosition) {
+    if (playerPosition == PLAYER_UP) {
+        return {
+            x:this.x + this.width - 11,
+            y:( this.y + this.height / 12 ) - 4
+        };
+    } else if (playerPosition == PLAYER_DOWN) {
+        return {
+            x:this.x + this.width - 11,
+            y:( this.y + this.height / 12 ) + 44
+        };
+    } else if (playerPosition == PLAYER_RIGHT) {
+        return {
+            x:(this.x + this.width / 2) + 24,
+            y:(this.y + this.height / 2) + 8
+        };
+    } else if (playerPosition == PLAYER_LEFT) {
+        return {
+            x:(this.x + this.width / 2) - 26,
+            y:(this.y + this.height / 2) + 8
+        };
+    }
+};
+
 player.explode = function () {
     this.active = false;
     // Extra Credit: Add an explosion graphic and then end the game
 };
 
-player.sprite = Sprite(PLAYER_UP);
-player.oldSprite = PLAYER_UP;
-player.draw = function () {
+player.setSprite(Sprite(PLAYER_UP)).setPreviousSpriteName(PLAYER_UP).draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
 };
-
-$('#resume-pause').toggle(function () {
-    pauseGame();
-    $(this).text('Resume');
-}, function () {
-    startGame();
-    $(this).text('Pause');
-});
-$('body').keypress(function () {
-    if (keydown.p) {
-        var $el = $('#resume-pause');
-        if ($el.text() === 'Resume') {
-            startGame();
-            $el.text('Pause');
-        } else {
-            pauseGame();
-            $el.text('Resume');
-        }
-    }
-});
 //]]>
 </script>
 </body>
