@@ -34,7 +34,7 @@ body {
     border-radius: 15px;
 }
 
-#start-screen, #character-select-screen, #gameOver {
+#start-screen, #character-select-screen, #gameOver, #endGame {
     margin: 10% auto 0;
     z-index: 5;
     width: 800px;
@@ -60,6 +60,11 @@ body {
 
 #gameOver {
     background: url(../img/arsenalGameOver.jpg);
+    display: none;
+}
+
+#endGame {
+    background-color: #000;
     display: none;
 }
 
@@ -101,7 +106,7 @@ body {
 .arrow {
     width: 128px;
     height: 277px;
-    background: url(../img/arrow.png) no-repeat 90% 0%;
+    background: url(../img/arrow.png) no-repeat 90% 0;
     margin: 0 auto;
 }
 

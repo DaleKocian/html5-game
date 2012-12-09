@@ -160,10 +160,15 @@ function update() {
     if (zombiesToKill < 1) {
         resetGame();
         updateWave();
-        setZombiesToCreateAndKill();
-        setZombieSwarmCoefficient();
-        saveGame();
-        resumeGame();
+        if (WAVE_COUNT.length < currentWave) {
+            $('#game').hide();
+            $('#endGame').show();
+        } else {
+            setZombiesToCreateAndKill();
+            setZombieSwarmCoefficient();
+            saveGame();
+            resumeGame();
+        }
     }
 }
 
