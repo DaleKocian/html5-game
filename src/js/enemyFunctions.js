@@ -5,15 +5,19 @@ function setEnemyStartingPoint(enemy) {
     switch (r) {
         case 1:
             enemy.y = 0;
+            enemy.sprite = Sprite('enemy');
             break;
         case 2:
             enemy.x = 0;
+            enemy.sprite = Sprite('enemy-right');
             break;
         case 3:
             enemy.x = CANVAS_WIDTH;
+            enemy.sprite = Sprite('enemy-left');
             break;
         default:
             enemy.y = CANVAS_HEIGHT;
+            enemy.sprite = Sprite('enemy-up');
             break
     }
     return enemy;
@@ -39,8 +43,6 @@ function Enemy(enemy) {
         return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&
             enemy.y >= 0 && enemy.y <= CANVAS_HEIGHT;
     };
-
-    enemy.sprite = Sprite('enemy');
 
     enemy.draw = function () {
         this.sprite.draw(canvas, this.x, this.y);
