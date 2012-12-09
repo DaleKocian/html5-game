@@ -67,18 +67,18 @@ body {
     margin-bottom: 0;
 }
 
-#charcterTable img {
+#characterTable img {
     cursor: pointer;
     width: 128px;
     height: 277px;
     clear: both;
 }
 
-#charcterTable {
+#characterTable {
     width: 100%;
 }
 
-#charcterTable td {
+#characterTable td {
     text-align: center;
     vertical-align: top;
 }
@@ -97,7 +97,7 @@ body {
 #start-button:hover, #continue-button:hover, #play-again:hover {
     color: #ff0000;
 }
-#charcterTable div {
+#characterTable div {
     padding-top: 68px;
 }
 .arrow {
@@ -111,6 +111,9 @@ body {
     height: 106px;
     color: #006600;
     margin: 0 auto;
-    font-family: Courier;
+    font-family: Courier, serif;
     font-weight: bold;
+}
+#titleScreenMusic {
+    display: none;
 }

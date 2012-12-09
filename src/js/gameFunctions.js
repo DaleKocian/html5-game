@@ -146,11 +146,10 @@ function update() {
         --zombiesToCreate;
     }
     if (zombiesToKill < 1) {
-        pauseGame();
+        resetGame();
         updateWave();
         setZombiesToCreateAndKill();
         setZombieSwarmCoefficient();
-        resumeGame();
         saveGame();
         resumeGame();
     }
@@ -170,12 +169,4 @@ function draw() {
     enemies.forEach(function (enemy) {
         enemy.draw();
     });
-}
-
-function playTitleMusic(){
-   Sound.play("titleScreenMusic");
-}
-
-function stopTitleMusic(){
-	Sound.stop("titleScreenMusic");
 }
