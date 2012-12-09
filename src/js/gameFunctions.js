@@ -87,14 +87,23 @@ function setupVarsAndGameBar() {
     CANVAS_HEIGHT = canvasElement.attr('height');
     updateMenu();
 }
+
 function updateMenu() {
     $('#lives').find('span').text(lives);
     $('#score').find('span').text(score);
     $('#health').find('span').text(health);
     $('#wave').find('span').text(currentWave);
 }
+
 function setZombieSwarmCoefficient() {
     zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[currentWave-1];
+}
+
+function setupPlayerSpriteConstants(name) {
+    PLAYER_UP = name + '-up';
+    PLAYER_DOWN = name + '-down';
+    PLAYER_LEFT = name + '-left';
+    PLAYER_RIGHT = name + '-right';
 }
 
 function update() {

@@ -18,32 +18,8 @@ function addStartScreenButtonListener() {
 function addCharacterSelectListener() {
     $('#dale, #triest, #leon').on('click', function () {
         var id = $(this).prop('id');
-        switch (id) {
-            case 'dale':
-                console.log('You selected Dale!');
-                PLAYER_UP = 'dale-up';
-                PLAYER_DOWN = 'dale-down';
-                PLAYER_LEFT = 'dale-left';
-                PLAYER_RIGHT = 'dale-right';
-                player.setSprite(Sprite(PLAYER_UP));
-                break;
-            case 'triest':
-                console.log('You selected Triest!');
-                PLAYER_UP = 'triest-up';
-                PLAYER_DOWN = 'triest-down';
-                PLAYER_LEFT = 'triest-left';
-                PLAYER_RIGHT = 'triest-right';
-                player.setSprite(Sprite(PLAYER_UP));
-                break;
-            case 'leon':
-                console.log('You selected Leon!');
-                PLAYER_UP = 'leon-up';
-                PLAYER_DOWN = 'leon-down';
-                PLAYER_LEFT = 'leon-left';
-                PLAYER_RIGHT = 'leon-right';
-                player.setSprite(Sprite(PLAYER_UP));
-                break;
-        }
+        setupPlayerSpriteConstants(id);
+        player.setSprite(Sprite(PLAYER_UP));
         $('#character-select-screen').hide('slow');
         $('#game').show('slow');
         startGame();
