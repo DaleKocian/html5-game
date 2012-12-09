@@ -19,6 +19,8 @@
         Start Game
     </div>
 </div>
+<div id="gameOver">
+</div>
 <div id="character-select-screen">
     <h1>Select Your Character</h1>
     <img id="dale" src="img/dale.png"/>
@@ -33,7 +35,8 @@
     </canvas>
     <div class="playerMenuItem" id="score">Score:</div>
     <div class="playerMenuItem" id="lives">Lives:</div>
-    <div class="playerMenuItem" id="health">Health: 10</div>
+    <div class="playerMenuItem" id="health">Health: 1</div>
+    <!--TODO: change to 10-->
 </div>
 <script type="text/javascript">
 //<![CDATA[
@@ -265,6 +268,13 @@ function handleCollisions() {
             enemy.explode();
             player.explode();
             reduceHealth();
+            <!--end the game at 0 lives and show game over screen-->
+            if (HEALTH == 0) {
+                resetGame();
+                $('#character-select-screen').hide('fast');
+                $('#game').hide('fast');
+                $('#gameOver').show('fast');
+            }
         }
     });
 }
