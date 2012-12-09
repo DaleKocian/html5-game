@@ -9,7 +9,9 @@
     <script language="javascript" src="js/util.js" type="text/javascript"></script>
     <script language="javascript" src="js/sprite.js" type="text/javascript"></script>
     <script language="javascript" src="js/sound.js" type="text/javascript"></script>
-    <script language="javascript" src="js/player.js" type="text/javascript"></script>
+    <script language="javascript" src="js/constants.js" type="text/javascript"></script>
+    <script language="javascript" src="js/gameFunctions.js" type="text/javascript"></script>
+    <script language="javascript" src="js/default.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="start-screen">
@@ -35,69 +37,8 @@
 </div>
 <script type="text/javascript">
 //<![CDATA[
-$('#start-button').on('click', function () {
-    $(this).parent().hide("slow");
-    $('#character-select-screen').show("slow");
-});
-$('#dale, #triest').on('click', function () {
-    var id = $(this).prop('id');
-    switch (id) {
-        case 'dale':
-            console.log('You selected Dale!');
-            break;
-        case 'triest':
-            console.log('You selected Triest!');
-            break;
-    }
-    $('#character-select-screen').hide('slow');
-    $('#game').show('slow');
-    startGame()
-});
 
-var canvasElement = $('#canvasBg');
-var canvas = canvasElement.get(0).getContext("2d");
-var CANVAS_WIDTH = canvasElement.attr('width');
-var CANVAS_HEIGHT = canvasElement.attr('height');
-var FPS = 30;
-var PLAYER_UP = "player-up";
-var PLAYER_DOWN = "player-down";
-var PLAYER_LEFT = "player-left";
-var PLAYER_RIGHT = "player-right";
-var SCORE = 0;
-var HEALTH = 10;
-var STRAFE_MODE = false;
-var SHIFT_UP = true;
 
-var playerBullets = [];
-var player = {
-    color: "#00A",
-    x: 635,
-    y: 343.5,
-    width: 38,
-    height: 53,
-    prevSpriteName: null,
-    sprite: null,
-    draw: function () {
-        canvas.fillStyle = this.color;
-        canvas.fillRect(this.x, this.y, this.width, this.height);
-    },
-    setWidth: function (width) {
-        this.width = width;
-        return this;
-    },
-    setHeight: function (height) {
-        this.height = height;
-        return this;
-    },
-    setPreviousSpriteName: function (name) {
-        this.prevSpriteName = name;
-        return this;
-    },
-    setSprite: function (sprite) {
-        this.sprite = sprite;
-        return this;
-    }
-};
 function Bullet(I) {
     I.active = true;
     determineBulletDirection(I, player.prevSpriteName);
@@ -145,8 +86,6 @@ function determineBulletDirection(I, playerPosition) {
         I.yVelocity = 0;
     }
 }
-
-enemies = [];
 
 function setEnemyStartingPoint(I) {
     var r = Math.floor(Math.random() * 4) + 1;
@@ -224,22 +163,6 @@ function Enemy(I) {
 
     return I;
 }
-var refreshIntervalId;
-
-function startGame() {
-    refreshIntervalId = setInterval(function () {
-        update();
-        draw();
-    }, 1000 / FPS);
-}
-function pauseGame() {
-    clearInterval(refreshIntervalId);
-}
-
-function resetGame() {
-    clearInterval(refreshIntervalId);
-    canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-}
 function update() {
 
     if (keydown.space) {
@@ -247,11 +170,11 @@ function update() {
     }
 
     if (keydown.shift) {
-        STRAFE_MODE = SHIFT_UP ? true : false;
+        STRAFE_MODE = !!SHIFT_UP;
     }
 
     if (keyup.shift) {
-        SHIFT_UP = STRAFE_MODE ? false : true;
+        SHIFT_UP = !STRAFE_MODE;
     }
 
     if (keydown.left) {
@@ -394,17 +317,6 @@ player.oldSprite = PLAYER_UP;
 player.draw = function () {
     this.sprite.draw(canvas, this.x, this.y);
 };
-
-function updateScore() {
-    SCORE++;
-    $('#score').text("Score: " + SCORE);
-}
-function reduceHealth() {
-    if (HEALTH > 0) {
-        HEALTH--;
-    }
-    $('#health').text("Health: " + HEALTH)
-}
 
 $('#resume-pause').toggle(function () {
     pauseGame();
