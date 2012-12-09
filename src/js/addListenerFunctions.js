@@ -53,3 +53,10 @@ function addPauseResumeKeyListener() {
         }
     });
 }
+function addPlayAgainListener() {
+    $('#play-again').on('click', function() {
+        $(this).closest('#gameOver').hide('slow');
+        $('#game').show('slow');
+        startGame();
+    });
+}

@@ -80,16 +80,16 @@ body {
     float: right;
 }
 
-#start-button, #continue-button {
+#start-button, #continue-button, #play-again {
     font-size: 40px;
     color: #fff;
     text-align: center;
     cursor: pointer;
 }
-#start-button {
+#start-button, #play-again {
     padding-top: 215px;
 }
 
-#start-button:hover, #continue-button:hover {
+#start-button:hover, #continue-button:hover, #play-again:hover {
     color: #ff0000;
 }

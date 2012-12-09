@@ -8,4 +8,5 @@ $(function () {
     addCharacterSelectListener();
     addPauseResumeButtonListener();
     addPauseResumeKeyListener();
+    addPlayAgainListener();
 });
