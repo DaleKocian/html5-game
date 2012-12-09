@@ -43,7 +43,6 @@ function Enemy(enemy) {
         return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&
             enemy.y >= 0 && enemy.y <= CANVAS_HEIGHT;
     };
-
     enemy.draw = function () {
         this.sprite.draw(canvas, this.x, this.y);
     };

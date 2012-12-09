@@ -73,7 +73,6 @@ function handleCollisions() {
             <!--end the game at 0 lives and show game over screen-->
             if (health < 1) {
                 resetGame();
-                $('#character-select-screen').hide();
                 $('#game').hide();
                 $('#gameOver').show();
             }

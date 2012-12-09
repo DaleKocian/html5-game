@@ -23,6 +23,7 @@ function pauseGame() {
 function resetGame() {
     clearInterval(refreshIntervalId);
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    enemies = [];
 }
 
 function saveGame() {
