@@ -3,7 +3,7 @@ function Bullet(enemy) {
     determineBulletDirection(enemy, player.prevSpriteName);
     enemy.width = 3;
     enemy.height = 3;
-    enemy.color = '#000';
+    enemy.color = '#FFD700';
 
     enemy.inBounds = function () {
         return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&
