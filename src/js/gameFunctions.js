@@ -150,7 +150,6 @@ function update() {
         updateWave();
         setZombiesToCreateAndKill();
         setZombieSwarmCoefficient();
-        resumeGame();
         saveGame();
         resumeGame();
     }
