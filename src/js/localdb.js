@@ -1,8 +1,9 @@
-var GAMEDB;
-function nullDataHandler(){
+var GAMEDB = null;
+var isTableExisting = false;
+function nullDataHandler() {
     console.log("SQL Query Succeeded");
 }
-function errorHandler(){
+function errorHandler() {
     console.log("SQL Query Succeeded");
 }
 function prePopulate() {
@@ -25,7 +26,7 @@ function createTables() {
     );
     prePopulate();
 }
-function initDatabase() {
+function openDatabaseConnection() {
     try {
         if (!window.openDatabase) {
             alert('Databases are not supported in this browser.');
@@ -35,8 +36,6 @@ function initDatabase() {
             var displayName = 'DEMO Database';  // The full display name / description of the database
             var maxSize = 100000/*bytes*/;      // This is max size in bytes is the size you expect the database to reach.
             GAMEDB = openDatabase(shortName, version, displayName, maxSize);
-            createTables();
-            selectAll();
         }
     } catch (e) {
         if (e === 2) {
@@ -46,6 +45,13 @@ function initDatabase() {
             console.log("Unknown error " + e + ".");
         }
         return;
+    }
+}
+function initDatabase() {
+    openDatabaseConnection();
+    if (GAMEDB !== null) {
+        createTables();
+        selectAll();
     }
 }
 function selectAll() {
@@ -66,6 +72,7 @@ function dataSelectHandler(transaction, results) {
             wave: row['wave']
         };
     }
+    alert(results.rows.length);
 }
 function updateSetting(id, lives, score, wave) {
     GAMEDB.transaction(
@@ -76,7 +83,7 @@ function updateSetting(id, lives, score, wave) {
     );
     selectAll();
 }
-function dropTables(){
+function dropTables() {
     GAMEDB.transaction(
         function (transaction) {
             var sql = 'DROP TABLE game_settings;';
@@ -84,4 +91,17 @@ function dropTables(){
         }
     );
     location.reload();
+}
+
+function tableExitsDataHandler(transaction, results) {
+    isTableExisting = !!(results.rows.length > 0);
+}
+
+function tableExists() {
+    GAMEDB.transaction(
+        function (transaction) {
+            var sql = 'SELECT * FROM game_settings;';
+            transaction.executeSql(sql, [], tableExitsDataHandler, errorHandler);
+        }
+    );
 }
