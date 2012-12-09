@@ -1,6 +1,6 @@
 var Sound = (function($) {
-  var format = $.browser.webkit ? ".mp3" : ".wav";
-  var soundPath = "sounds/";
+  var format = $.browser.webkit ? '.mp3' : '.wav';
+  var soundPath = 'sounds/';
   var sounds = {};
 
   function loadSoundChannel(name) {

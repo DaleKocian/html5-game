@@ -32,7 +32,7 @@
       },
       
       fill: function(canvas, x, y, width, height, repeat) {
-        repeat = repeat || "repeat";
+        repeat = repeat || 'repeat';
         var pattern = canvas.createPattern(image, repeat);
         canvas.fillColor(pattern);
         canvas.fillRect(x, y, width, height);
@@ -61,10 +61,10 @@
     return proxy;
   };
  
-  var spriteImagePath = "img/";
+  var spriteImagePath = 'img/';
 
   window.Sprite = function(name, callback) {
-    return Sprite.load(spriteImagePath + name + ".png", callback);
+    return Sprite.load(spriteImagePath + name + '.png', callback);
   };
   window.Sprite.EMPTY = LoaderProxy();
   window.Sprite.load = Sprite.load;

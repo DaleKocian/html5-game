@@ -1,10 +1,10 @@
 var GAMEDB = null;
 var isTableExisting = false;
 function nullDataHandler() {
-    console.log("SQL Query Succeeded");
+    console.log('SQL Query Succeeded');
 }
 function errorHandler() {
-    console.log("SQL Query Succeeded");
+    console.log('SQL Query Succeeded');
 }
 function prePopulate() {
     GAMEDB.transaction(
@@ -40,9 +40,9 @@ function openDatabaseConnection() {
     } catch (e) {
         if (e === 2) {
             // Version number mismatch.
-            console.log("Invalid database version.");
+            console.log('Invalid database version.');
         } else {
-            console.log("Unknown error " + e + ".");
+            console.log('Unknown error ' + e + '.');
         }
         return;
     }
