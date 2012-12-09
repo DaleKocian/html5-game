@@ -8,7 +8,7 @@
  *
  * @param {Number} min The lower boundary of the output range
  * @param {Number} max The upper boundary of the output range
- * @returns A number in the range [min, max]
+ * @returns Number number in the range [min, max]
  * @type Number
  */
 Number.prototype.clamp = function(min, max) {

@@ -41,9 +41,8 @@
       width: width,
       height: height
     };
-  };
-  
-  Sprite.load = function(url, loadedCallback) {
+  }
+    Sprite.load = function(url, loadedCallback) {
     var img = new Image();
     var proxy = LoaderProxy();
     
