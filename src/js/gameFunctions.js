@@ -1,6 +1,7 @@
 function startGame() {
     setupVarsAndGameBar();
     setZombiesToCreateAndKill();
+    setZombieSwarmCoefficient();
     resumeGame();
 }
 function resumeGame() {
