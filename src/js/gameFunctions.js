@@ -146,7 +146,7 @@ function update() {
         --zombiesToCreate;
     }
     if (zombiesToKill < 1) {
-        pauseGame();
+        resetGame();
         updateWave();
         setZombiesToCreateAndKill();
         setZombieSwarmCoefficient();
