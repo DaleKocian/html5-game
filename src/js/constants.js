@@ -2,7 +2,7 @@ var FPS = 30;
 var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stands up for what is right. ' +
     'He is the guy that gets things done his own way. He has no time for childish games, ' +
     'and he doesn\'t let his personal life get in the way of his mission.';
-var CREDITS = 'This game was brought to your by SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights';
+var CREDITS = 'This game was brought to your by SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights<div style="margin-top: 50px">Thank You For Playing</div>';
 var LEONS_BIO = 'Hailing from UIW, and previously stationed at Fort Central Mkt, he welcomes any challenge.  He was recruited by leader of the revolution against Zombie Rebels, ' +
     'Cool Breeze, who refuses to accept anything less than victory.';
 var TRIEST_BIO = 'Recruited from Arkansas by acting President Danny Carroll to assist in operation "COOL BREEZE"' +
@@ -12,6 +12,8 @@ var PLAYER_DOWN = 'player-down';
 var PLAYER_LEFT = 'player-left';
 var PLAYER_RIGHT = 'player-right';
 var MED = 'med';
+var MILLISECONDS_PER_SECOND = 1000;
+var NUM_SECONDS_TO_SHOW_CREDITS = 42;
 var INITIAL_LIVES = 3;
 var INITIAL_SCORE = 0;
 var INITIAL_HEALTH = 1; //TODO:  change to 10
@@ -27,7 +29,7 @@ var MED_HEIGHT = 53;
 var MED_START_X = 300;
 var MED_START_Y = 200;
 var ZOMBIE_WAVE_SWARM_COEFFICIENT = [0.05, 0.08, 0.125];
-var WAVE_COUNT = [50, 75, 125];
+var WAVE_COUNT = [1];
 var CANVAS_WIDTH;
 var CANVAS_HEIGHT;
 var score = INITIAL_SCORE;

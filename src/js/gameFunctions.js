@@ -173,6 +173,10 @@ function update() {
         if (WAVE_COUNT.length < currentWave) {
             $('#game').hide();
             $('#endGame').show().find('.vertical-scroller').html(CREDITS);
+            setTimeout(function () {
+                $('#endGame').hide('slow');
+                $('#start-screen').show('slow');
+            }, MILLISECONDS_PER_SECOND * NUM_SECONDS_TO_SHOW_CREDITS);
         } else {
             setZombiesToCreateAndKill();
             setZombieSwarmCoefficient();
