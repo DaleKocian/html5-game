@@ -6,8 +6,8 @@ var PLAYER_RIGHT = "player-right";
 var SCORE = 0;
 var HEALTH = 1;   //TODO:  change to 10
 var LIVES = 3;
-var STRAFE_MODE = false;
-var SHIFT_UP = true;
+var strafeModeEnabled = false;
+var shiftUp = true;
 var refreshIntervalId;
 var enemies = [];
 var playerBullets = [];
@@ -21,11 +21,11 @@ var PLAYER_WIDTH = 38;
 var PLAYER_HEIGHT = 53;
 var PLAYER_START_X = 635;
 var PLAYER_START_Y = 343.5;
-var CURRENT_WAVE = 1;
+var currentWave = 1;
 var WAVE_1_COUNT = 50;
 var WAVE_2_COUNT = 75;
 var WAVE_3_COUNT = 125;
-var enemyWaveCount;
+var enemiesToCreate = WAVE_1_COUNT;
 var player = {
     color:"#00A",
     x:PLAYER_START_X,

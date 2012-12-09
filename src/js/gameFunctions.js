@@ -16,7 +16,7 @@ function resetGame() {
 }
 
 function updateWave() {
-    $('#wave span').text(++CURRENT_WAVE);
+    $('#wave span').text(++currentWave);
 }
 
 function updateScore() {
@@ -37,7 +37,7 @@ function setupVarsAndGameBar() {
     $('#lives span').text(LIVES);
     $('#score span').text(SCORE);
     $('#health span').text(HEALTH);
-    $('#wave span').text(CURRENT_WAVE);
+    $('#wave span').text(currentWave);
 }
 
 function Bullet(enemy) {
@@ -166,13 +166,16 @@ function Enemy(enemy) {
 }
 
 function setWave() {
-    var waveText = $('#wave').text();
-    if (waveText === WAVE + 1) {
-        enemyWaveCount = WAVE_1_COUNT;
-    } else if (waveText === WAVE + 2) {
-        enemyWaveCount = WAVE_2_COUNT;
-    } else if (waveText === WAVE + 3) {
-        enemyWaveCount = WAVE_3_COUNT;
+    switch(currentWave) {
+        case 1:
+            enemiesToCreate = WAVE_1_COUNT;
+            break;
+        case 2:
+            enemiesToCreate = WAVE_2_COUNT;
+            break;
+        case 3:
+            enemiesToCreate = WAVE_3_COUNT;
+            break;
     }
 }
 
@@ -182,37 +185,37 @@ function update() {
     }
 
     if (keydown.shift) {
-        STRAFE_MODE = !!SHIFT_UP;
+        strafeModeEnabled = !!shiftUp;
     }
 
     if (keyup.shift) {
-        SHIFT_UP = !STRAFE_MODE;
+        shiftUp = !strafeModeEnabled;
     }
 
     if (keydown.left) {
         player.x -= 5;
-        if (player.prevSpriteName !== PLAYER_LEFT && !STRAFE_MODE) {
+        if (player.prevSpriteName !== PLAYER_LEFT && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_LEFT)).setWidth(53).setHeight(38).setPreviousSpriteName(PLAYER_LEFT);
         }
     }
 
     if (keydown.right) {
         player.x += 5;
-        if (player.prevSpriteName !== PLAYER_RIGHT && !STRAFE_MODE) {
+        if (player.prevSpriteName !== PLAYER_RIGHT && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_RIGHT)).setWidth(53).setHeight(38).setPreviousSpriteName(PLAYER_RIGHT);
         }
     }
 
     if (keydown.up) {
         player.y -= 5;
-        if (player.prevSpriteName !== PLAYER_UP && !STRAFE_MODE) {
+        if (player.prevSpriteName !== PLAYER_UP && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_UP)).setWidth(38).setHeight(53).setPreviousSpriteName(PLAYER_UP);
         }
     }
 
     if (keydown.down) {
         player.y += 5;
-        if (player.prevSpriteName !== PLAYER_DOWN && !STRAFE_MODE) {
+        if (player.prevSpriteName !== PLAYER_DOWN && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_DOWN)).setWidth(38).setHeight(53).setPreviousSpriteName(PLAYER_DOWN);
         }
     }
@@ -238,9 +241,9 @@ function update() {
 
     handleCollisions();
 
-    if (Math.random() < 0.05 && enemyWaveCount > 0) {
+    if (Math.random() < 0.05 && enemiesToCreate > 0) {
         enemies.push(Enemy());
-        enemyWaveCount--;
+        enemiesToCreate--;
     }
 }
 
