@@ -5,8 +5,9 @@ var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stand
 var CREDITS = 'This game was brought to your by SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights<div style="margin-top: 50px">Thank You For Playing</div>';
 var LEONS_BIO = 'Hailing from UIW, and previously stationed at Fort Central Mkt, he welcomes any challenge.  He was recruited by leader of the revolution against Zombie Rebels, ' +
     'Cool Breeze, who refuses to accept anything less than victory.';
-var TRIEST_BIO = 'Recruited from Arkansas by acting President Danny Carroll to assist in operation "COOL BREEZE"' +
-    ', the offensive strike to rid the United States of the Zombie Rebels';
+var TRIEST_BIO = 'Raised in a military family, Triest is well prepared to fight against' +
+    ' the zombie infidels who have threatened the United States. He was recruited from Arkansas by Cool Breeze to assist in' +
+    ' the offensive strike to rid the United States of these vile zombies.';
 var PLAYER_UP = 'player-up';
 var PLAYER_DOWN = 'player-down';
 var PLAYER_LEFT = 'player-left';
