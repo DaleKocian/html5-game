@@ -30,7 +30,7 @@
     </canvas>
     <div class="playerMenuItem" id="score">Score:</div>
     <div class="playerMenuItem" id="lives">Lives:</div>
-    <div class="playerMenuItem" id="health">Health: 100</div>
+    <div class="playerMenuItem" id="health">Health: 10</div>
 </div>
 <script type="text/javascript">
 //<![CDATA[
@@ -63,7 +63,7 @@ var PLAYER_DOWN = "player-down";
 var PLAYER_LEFT = "player-left";
 var PLAYER_RIGHT = "player-right";
 var SCORE = 0;
-var HEALTH = 100;
+var HEALTH = 10;
 
 
 var player = {
@@ -390,7 +390,9 @@ function updateScore() {
     $('#score').text("Score: " + SCORE);
 }
 function reduceHealth() {
-    HEALTH--;
+    if (HEALTH > 0) {
+        HEALTH--;
+    }
     $('#health').text("Health: " + HEALTH)
 }
 
