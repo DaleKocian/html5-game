@@ -1,16 +1,14 @@
-
-
 function addStartScreenButtonListener() {
     $('#start-button').on('click', function () {
         $('#titleScreenMusic').get(0).pause();
         saveGame();
-        $(this).closest('#start-screen').hide('slow');
-        $('#character-select-screen').show('slow');
+        $(this).closest('#start-screen').hide();
+        $('#character-select-screen').show();
     });
     $('#continue-button').on('click', function () {
         $('#titleScreenMusic').get(0).pause();
         setSavedGameSettings();
-        $(this).closest('#start-screen').hide('slow');
+        $(this).closest('#start-screen').hide();
         $('#game').show('slow');
         startGame()
     });
@@ -31,12 +29,12 @@ function addCharacterHoverListener() {
         $(this).parent().addClass('arrow');
         var id = $(this).prop('id');
         var $playerInfo = $('#playerInfo');
-        if(id === 'dale') {
+        if (id === 'dale') {
             $playerInfo.html('Name: Dale Kocian<br/>' +
                 'CodeName: Cash<br/>' +
                 'Years of Service: 2 <br/>' +
                 'Story: ' + DALES_BIO);
-        } else if(id === 'triest') {
+        } else if (id === 'triest') {
             $playerInfo.html('Name: Triest Montel Smart<br/>' +
                 'CodeName: Lil\' Trigga<br/>' +
                 'Years of Service: 2 <br/>' +
@@ -60,9 +58,9 @@ function addPauseResumeButtonListener() {
 }
 function addPauseResumeKeyListener() {
     $('body').keypress(function () {
-        if(keydown.p) {
+        if (keydown.p) {
             var $el = $('#resume-pause');
-            if($el.text() === 'Resume') {
+            if ($el.text() === 'Resume') {
                 resumeGame();
                 $el.text('Pause');
             } else {

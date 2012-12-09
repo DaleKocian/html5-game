@@ -60,13 +60,14 @@ body {
 }
 
 #character-select-screen h1 {
+    text-shadow: #fff 0px 1px 0, #000 0 -1px 0;
     text-align: center;
-    color: #fff;
+    color: #14c207;
     margin-bottom: 0;
 }
 
 #gameOver {
-    background: url(../img/arsenalGameOver.jpg);
+    background: url(../img/arsenalGameOver.png);
     display: none;
 }
 
@@ -99,15 +100,46 @@ body {
     cursor: pointer;
     margin: 0 auto;
 }
+
 #start-button {
-    width: 179px;
+    width: 110px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    padding: 10px 40px;
+    margin-bottom: 25px;
+    background: -moz-linear-gradient(top, #2e2c28 0%, #e01d1d);
+    background: -webkit-gradient(linear, left top, left bottom, from(#2e2c28), to(#e01d1d));
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #b80000;
+    -moz-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
+    text-shadow: 0px -1px 1px rgba(000, 000, 000, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
+
 #continue-button {
-    width: 245px;
+    width: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    padding: 10px 20px;
+    background: -moz-linear-gradient(top, #2e2c28 0%, #e01d1d);
+    background: -webkit-gradient(linear, left top, left bottom, from(#2e2c28), to(#e01d1d));
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #b80000;
+    -moz-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
+    text-shadow: 0px -1px 1px rgba(000, 000, 000, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
+
 #play-again {
     width: 175px;
 }
+
 #start-button:hover, #continue-button:hover, #play-again:hover {
     color: #ff0000;
 }
@@ -135,11 +167,13 @@ body {
 #titleScreenMusic {
     display: none;
 }
+
 .vertical-scroller {
     /*marquee-style:scroll;
     marquee-play-count:1;
     marquee-direction:forward;*/
 }
+
 .spacer {
     height: 200px;
 }
