@@ -3,7 +3,8 @@ var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stand
     'He is the guy that gets things done his own way. He has no time for childish games, ' +
     'and he doesn\'t let his personal life get in the way of his mission.';
 var CREDITS = 'This game was brought to your by SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights';
-var LEONS_BIO = 'The paladin calls upon his holy light to heal the wounds of himself and others.';
+var LEONS_BIO = 'Hailing from UIW, and previously stationed at Fort Central Mkt, he welcomes any challenge.  He was recruited by leader of the revolution against Zombie Rebels, ' +
+    'Cool Breeze, who refuses to accept anything less than victory.';
 var TRIEST_BIO = 'Recruited from Arkansas by acting President Danny Carroll to assist in operation "COOL BREEZE"' +
     ', the offensive strike to rid the United States of the Zombie Rebels';
 var PLAYER_UP = 'player-up';
@@ -44,65 +45,65 @@ var zombiesToCreate;
 var zombiesToKill;
 var zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[0];
 var player = {
-    color: '#00A',
-    x: PLAYER_START_X,
-    y: PLAYER_START_Y,
-    width: PLAYER_WIDTH,
-    height: PLAYER_HEIGHT,
-    prevSpriteName: null,
-    sprite: null,
-    draw: function () {
+    color:'#00A',
+    x:PLAYER_START_X,
+    y:PLAYER_START_Y,
+    width:PLAYER_WIDTH,
+    height:PLAYER_HEIGHT,
+    prevSpriteName:null,
+    sprite:null,
+    draw:function () {
         canvas.fillStyle = this.color;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     },
-    setWidth: function (width) {
+    setWidth:function (width) {
         this.width = width;
         return this;
     },
-    setHeight: function (height) {
+    setHeight:function (height) {
         this.height = height;
         return this;
     },
-    setPreviousSpriteName: function (name) {
+    setPreviousSpriteName:function (name) {
         this.prevSpriteName = name;
         return this;
     },
-    setSprite: function (sprite) {
+    setSprite:function (sprite) {
         this.sprite = sprite;
         return this;
     }
 };
 
 var med = {
-    x: MED_START_X,
-    y: MED_START_Y,
-    width: MED_WIDTH,
-    height: MED_HEIGHT,
-    prevSpriteName: null,
-    sprite: null,
-    draw: function () {
+    x:MED_START_X,
+    y:MED_START_Y,
+    width:MED_WIDTH,
+    height:MED_HEIGHT,
+    prevSpriteName:null,
+    sprite:null,
+    draw:function () {
         canvas.fillStyle = this.backgroundImage;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     },
-    setWidth: function (width) {
+    setWidth:function (width) {
         this.width = width;
         return this;
     },
-    setHeight: function (height) {
+    setHeight:function (height) {
         this.height = height;
         return this;
     },
-    setPreviousSpriteName: function (name) {
+    setPreviousSpriteName:function (name) {
         this.prevSpriteName = name;
         return this;
     },
-    setSprite: function (sprite) {
+    setSprite:function (sprite) {
         this.sprite = sprite;
         return this;
     }
 };
 
-var debug = function() {
+var debug = function () {
     console.log('FPS: ' + FPS);
     console.log('INITIAL_LIVES: ' + INITIAL_LIVES);
     console.log('INITIAL_SCORE: ' + INITIAL_SCORE);

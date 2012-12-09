@@ -41,7 +41,7 @@ function addCharacterHoverListener() {
                 'Story: ' + TRIEST_BIO);
         } else {
             $playerInfo.html('Name: Leon Knights<br/>' +
-                'CodeName: <br/>' +
+                'CodeName: LL Cool K<br/>' +
                 'Years of Service: 3 <br/>' +
                 'Story: ' + LEONS_BIO);
         }
