@@ -55,11 +55,21 @@ function addCharacterHoverListener() {
         $(this).parent().addClass('arrow');
         var id = $(this).prop('id');
         if(id === 'dale') {
-            $('#playerInfo').text(DALES_BIO);
+            $('#playerInfo').html("Name: Dale Kocian<br/>" +
+                "CodeName: Cash<br/>" +
+                "Years of Service: 2 <br/>" +
+                "Story: ");
         } else if(id === 'triest') {
-            $('#playerInfo').text(TRIEST_BIO);
+            $('#playerInfo').html("Name: Triest Montel Smart<br/>" +
+                "CodeName: Lil' Trigga<br/>" +
+                "Years of Service: 2 <br/>" +
+                "Story: Recruited from Arkansas by acting President Danny Carroll to assist in operation 'COOL BREEZE'" +
+                ", the offensive strike to rid the United States of the Zombie Rebels");
         } else {
-            $('#playerInfo').text(LEONS_BIO);
+            $('#playerInfo').html("Name: Leon Knights<br/>" +
+                "CodeName: <br/>" +
+                "Years of Service: 3 <br/>" +
+                "Story: ");
         }
     });
 }
