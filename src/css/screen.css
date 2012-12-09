@@ -60,7 +60,7 @@ body {
 }
 
 #character-select-screen h1 {
-    text-shadow: #fff 0px 1px 0, #000 0 -1px 0;
+    text-shadow: #fff 0 1px 0, #000 0 -1px 0;
     text-align: center;
     color: #14c207;
     margin-bottom: 0;
@@ -113,10 +113,10 @@ body {
     -webkit-border-radius: 6px;
     border-radius: 6px;
     /*border: 1px solid #b80000;*/
-    -moz-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
-    -webkit-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
-    box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
-    text-shadow: 0px -1px 1px rgba(000, 000, 000, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 0 1px 3px rgba(000, 000, 000, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: 0 1px 3px rgba(000, 000, 000, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 3px rgba(000, 000, 000, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+    text-shadow: 0 -1px 1px rgba(000, 000, 000, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 #continue-button {
@@ -130,10 +130,10 @@ body {
     -webkit-border-radius: 6px;
     border-radius: 6px;
     /*border: 1px solid #b80000;*/
-    -moz-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
-    -webkit-box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
-    box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.9), inset 0px -1px 0px rgba(255, 255, 255, 0.7);
-    text-shadow: 0px -1px 1px rgba(000, 000, 000, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 0 1px 3px rgba(000, 000, 000, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+    -webkit-box-shadow: 0 1px 3px rgba(000, 000, 000, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 3px rgba(000, 000, 000, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+    text-shadow: 0 -1px 1px rgba(000, 000, 000, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 #play-again {
@@ -173,7 +173,22 @@ body {
     marquee-play-count:1;
     marquee-direction:forward;*/
 }
-
+.vertical-scroller {
+    color: #fff;
+    width:790px;
+    height:490px;
+    padding:5px;
+    font-size: 30px;
+    overflow: hidden;
+    text-align: center;
+    /* Safari and Chrome  */
+    overflow-x:-webkit-marquee;
+    -webkit-marquee-direction: up;
+    -webkit-marquee-style: scroll;
+    -webkit-marquee-speed: 60;
+    -webkit-marquee-increment: small;
+    -webkit-marquee-repetition: 1;
+}
 .spacer {
     height: 200px;
 }

@@ -171,7 +171,7 @@ function update() {
         updateWave();
         if (WAVE_COUNT.length < currentWave) {
             $('#game').hide();
-            $('#endGame').show().find('.vertical-scroller').text(CREDITS);
+            $('#endGame').show().find('.vertical-scroller').html(CREDITS);
         } else {
             setZombiesToCreateAndKill();
             setZombieSwarmCoefficient();

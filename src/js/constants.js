@@ -2,14 +2,7 @@ var FPS = 30;
 var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stands up for what is right. ' +
     'He is the guy that gets things done his own way. He has no time for childish games, ' +
     'and he doesn\'t let his personal life get in the way of his mission.';
-var CREDITS = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non purus sed quam pulvinar ' +
-    'cursus. Nam viverra scelerisque laoreet. Vivamus at cursus nibh. Quisque vitae ligula non enim pretium ' +
-    'adipiscing aliquet sit amet lorem. Integer et pulvinar quam. Duis placerat malesuada commodo. In nisi purus, ' +
-    'placerat id adipiscing consectetur, elementum non urna. Nunc in ultricies diam. Pellentesque ullamcorper metus ' +
-    'in nisl pellentesque porta tincidunt lectus vulputate. Aenean sed orci justo, eu ullamcorper justo. Integer urna ' +
-    'diam, rutrum eu facilisis sit amet, viverra id tortor. Etiam ullamcorper molestie nulla, quis feugiat ante ' +
-    'pretium vitae. Sed urna nisl, tincidunt vel luctus id, faucibus ac massa. Fusce tristique molestie massa, ac ' +
-    'sollicitudin magna semper eu. Sed elit quam, luctus eu ultricies a, mattis a diam. Morbi ultrices viverra varius.';
+var CREDITS = 'This game was brought to your by SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights';
 var LEONS_BIO = 'The paladin calls upon his holy light to heal the wounds of himself and others.';
 var TRIEST_BIO = 'Recruited from Arkansas by acting President Danny Carroll to assist in operation "COOL BREEZE"' +
     ', the offensive strike to rid the United States of the Zombie Rebels';
@@ -33,7 +26,7 @@ var MED_HEIGHT = 53;
 var MED_START_X = 300;
 var MED_START_Y = 200;
 var ZOMBIE_WAVE_SWARM_COEFFICIENT = [0.05, 0.08, 0.125];
-var WAVE_COUNT = [1, 5];
+var WAVE_COUNT = [50, 75, 125];
 var CANVAS_WIDTH;
 var CANVAS_HEIGHT;
 var score = INITIAL_SCORE;
