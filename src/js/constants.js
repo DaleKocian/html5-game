@@ -16,7 +16,7 @@ var canvas;
 var CANVAS_WIDTH;
 var CANVAS_HEIGHT;
 var WAVE = 'Wave ';
-var WAVE_1_COUNT = 2;
+var WAVE_1_COUNT = 50;
 var WAVE_2_COUNT = 75;
 var WAVE_3_COUNT = 125;
 var enemyWaveCount;
