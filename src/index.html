@@ -64,6 +64,7 @@ var PLAYER_LEFT = "player-left";
 var PLAYER_RIGHT = "player-right";
 var SCORE = 0;
 var HEALTH = 10;
+var STRAFE_MODE = false;
 
 
 var player = {
@@ -229,9 +230,17 @@ function update() {
         player.shoot();
     }
 
+    if (keydown.shift) {
+        STRAFE_MODE = true;
+    }
+
+    if (keydown.ctrl) {
+        STRAFE_MODE = false;
+    }
+
     if (keydown.left) {
         player.x -= 5;
-        if (player.oldSprite !== PLAYER_LEFT) {
+        if (player.oldSprite !== PLAYER_LEFT && !STRAFE_MODE) {
             player.sprite = Sprite(PLAYER_LEFT);
             player.width = 53;
             player.height = 38;
@@ -241,7 +250,7 @@ function update() {
 
     if (keydown.right) {
         player.x += 5;
-        if (player.oldSprite !== PLAYER_RIGHT) {
+        if (player.oldSprite !== PLAYER_RIGHT && !STRAFE_MODE) {
             player.sprite = Sprite(PLAYER_RIGHT);
             player.width = 53;
             player.height = 38;
@@ -251,7 +260,7 @@ function update() {
 
     if (keydown.up) {
         player.y -= 5;
-        if (player.oldSprite !== PLAYER_UP) {
+        if (player.oldSprite !== PLAYER_UP && !STRAFE_MODE) {
             player.sprite = Sprite(PLAYER_UP);
             player.width = 38;
             player.height = 53;
@@ -261,7 +270,7 @@ function update() {
 
     if (keydown.down) {
         player.y += 5;
-        if (player.oldSprite !== PLAYER_DOWN) {
+        if (player.oldSprite !== PLAYER_DOWN && !STRAFE_MODE) {
             player.sprite = Sprite(PLAYER_DOWN);
             player.width = 38;
             player.height = 53;
