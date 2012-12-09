@@ -66,6 +66,7 @@ body {
 #endGame {
     background-color: #000;
     display: none;
+    color: #fff;
 }
 
 #characterTable img {
@@ -89,12 +90,17 @@ body {
     color: #fff;
     text-align: center;
     cursor: pointer;
+    margin: 0 auto;
 }
-
-#start-button, #play-again {
-    padding-top: 215px;
+#start-button {
+    width: 179px;
 }
-
+#continue-button {
+    width: 245px;
+}
+#play-again {
+    width: 175px;
+}
 #start-button:hover, #continue-button:hover, #play-again:hover {
     color: #ff0000;
 }
@@ -121,4 +127,12 @@ body {
 
 #titleScreenMusic {
     display: none;
+}
+.vertical-scroller {
+    /*marquee-style:scroll;
+    marquee-play-count:1;
+    marquee-direction:forward;*/
+}
+.spacer {
+    height: 200px;
 }
