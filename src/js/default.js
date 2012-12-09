@@ -10,4 +10,5 @@ $(function () {
     addPauseResumeKeyListener();
     addPlayAgainListener();
     addCharacterHoverListener();
+    addLostLifeListener();
 });

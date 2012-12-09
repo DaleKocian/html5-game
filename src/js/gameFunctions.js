@@ -57,15 +57,15 @@ function reduceHealth() {
 }
 
 function reduceLives() {
+    saveGame();
+    $('#game').hide();
+    $('#lostLife').show();
+
     $('#lives').find('span').text(--lives);
 
     //Reset initial health display on screen
     health = INITIAL_HEALTH;
     $('#health').find('span').text(health);
-
-    //Clear board and start over
-    resetGame();
-    startGame();
 }
 
 function increaseHealth() {

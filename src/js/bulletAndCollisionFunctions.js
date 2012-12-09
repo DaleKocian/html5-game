@@ -77,6 +77,7 @@ function handleCollisions() {
                     resetGame();
                     $('#game').hide();
                     $('#gameOver').show();
+                    $('#lostLife').hide();
                 }
             }
             --zombiesToKill;

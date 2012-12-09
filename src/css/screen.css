@@ -34,7 +34,7 @@ body {
     border-radius: 15px;
 }
 
-#start-screen, #character-select-screen, #gameOver, #endGame {
+#start-screen, #character-select-screen, #gameOver, #endGame, #lostLife {
     margin: 10% auto 0;
     z-index: 5;
     width: 800px;
@@ -45,6 +45,13 @@ body {
 
 #start-screen {
     background: url(../img/Post-Apocalyptic-Cityscape.jpg) no-repeat;
+}
+
+#lostLife {
+    background: url(../img/lostLifeScreen.jpg);
+    background-repeat: no-repeat;
+    background-color: #fff;
+    display: none;
 }
 
 #character-select-screen {

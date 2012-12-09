@@ -85,3 +85,13 @@ function addPlayAgainListener() {
         debug();
     });
 }
+
+function addLostLifeListener() {
+    $('#lostLife').on('click', function () {
+        //Clear board and start over
+        resetGame();
+        $('#game').show();
+        startGame();
+        $('#lostLife').hide();
+    });
+}
