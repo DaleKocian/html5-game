@@ -160,6 +160,16 @@ function Enemy(enemy) {
     return enemy;
 }
 
+function setWave() {
+    if ($('#wave').text() === WAVE + 1) {
+       enemyWaveCount = WAVE_1_COUNT;
+    } else if ($('#wave').text() === WAVE + 2) {
+        enemyWaveCount = WAVE_2_COUNT;
+    } else if ($('#wave').text() === WAVE + 3) {
+        enemyWaveCount = WAVE_3_COUNT;
+    }
+}
+
 function update() {
     if (keydown.space) {
         player.shoot();
