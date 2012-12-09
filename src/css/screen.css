@@ -8,14 +8,6 @@ body {
     margin: 0 auto;
 }
 
-#gameOver {
-    width: 736px;
-    height: 518px;
-    display: none;
-    margin: 0 auto;
-    background: url(../img/arsenalGameOver.png);
-}
-
 #resume-pause {
     float: right;
     cursor: pointer;
@@ -39,14 +31,16 @@ body {
     display: block;
     margin: 0 auto;
     background: #ffffff url(../img/GameBackground.jpg) no-repeat;
+    border-radius: 15px;
 }
 
-#start-screen, #character-select-screen {
+#start-screen, #character-select-screen, #gameOver {
     margin: 10% auto 0;
     z-index: 5;
     width: 800px;
     height: 500px;
     background-color: #fff;
+    border-radius: 15px;
 }
 
 #start-screen {
@@ -55,9 +49,6 @@ body {
 
 #character-select-screen {
     background-color: #000;
-}
-
-#character-select-screen {
     display: none;
 }
 
@@ -65,6 +56,11 @@ body {
     text-align: center;
     color: #fff;
     margin-bottom: 0;
+}
+
+#gameOver {
+    background: url(../img/arsenalGameOver.jpg);
+    display: none;
 }
 
 #characterTable img {
@@ -97,23 +93,27 @@ body {
 #start-button:hover, #continue-button:hover, #play-again:hover {
     color: #ff0000;
 }
+
 #characterTable div {
     padding-top: 68px;
 }
+
 .arrow {
     width: 128px;
     height: 277px;
     background: url(../img/arrow.png) no-repeat 90% 0%;
     margin: 0 auto;
 }
+
 #playerInfo {
-    width: 800px;
+    width: 745px;
     height: 106px;
     color: #006600;
     margin: 0 auto;
     font-family: Courier, serif;
     font-weight: bold;
 }
+
 #titleScreenMusic {
     display: none;
 }
