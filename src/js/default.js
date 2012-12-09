@@ -23,7 +23,7 @@ $(function () {
         startGame();
     });
 
-    $('#dale, #triest').on('click', function () {
+    $('#dale, #triest, #leon').on('click', function () {
         var id = $(this).prop('id');
         switch (id) {
             case 'dale':
@@ -31,6 +31,9 @@ $(function () {
                 break;
             case 'triest':
                 console.log('You selected Triest!');
+                break;
+            case 'leon':
+                console.log('You selected Leon!');
                 break;
         }
         $('#character-select-screen').hide('slow');
