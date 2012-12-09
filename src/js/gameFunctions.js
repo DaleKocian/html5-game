@@ -1,5 +1,4 @@
 function startGame() {
-    setEnemiesToCreate();
     refreshIntervalId = setInterval(function () {
         update();
         draw();
@@ -20,17 +19,17 @@ function updateWave() {
 }
 
 function updateScore() {
-    $('#score span').text(++SCORE);
+    $('#score span').text(++score);
 }
 
 function reduceHealth() {
-    if (HEALTH > 0) {
-        $('#health span').text(--HEALTH);
+    if (health > 0) {
+        $('#health span').text(--health);
     }
 }
 
 function increaseHealth() {
-    $('#health span').text(++HEALTH);
+    $('#health span').text(++health);
 }
 
 function setupVarsAndGameBar() {
@@ -38,9 +37,9 @@ function setupVarsAndGameBar() {
     canvas = canvasElement.get(0).getContext("2d");
     CANVAS_WIDTH = canvasElement.attr('width');
     CANVAS_HEIGHT = canvasElement.attr('height');
-    $('#lives span').text(LIVES);
-    $('#score span').text(SCORE);
-    $('#health span').text(HEALTH);
+    $('#lives span').text(lives);
+    $('#score span').text(score);
+    $('#health span').text(health);
     $('#wave span').text(currentWave);
 }
 
@@ -170,17 +169,7 @@ function Enemy(enemy) {
 }
 
 function setEnemiesToCreate() {
-    switch (currentWave) {
-        case 1:
-            enemiesToCreate = WAVE_1_COUNT;
-            break;
-        case 2:
-            enemiesToCreate = WAVE_2_COUNT;
-            break;
-        case 3:
-            enemiesToCreate = WAVE_3_COUNT;
-            break;
-    }
+    enemiesToCreate = getWaveCount();
 }
 
 function update() {
@@ -249,12 +238,35 @@ function update() {
         enemies.push(Enemy());
         enemiesToCreate--;
     }
+    if (score === getWaveCount()) {
+        pauseGame();
+        updateWave();
+        setEnemiesToCreate();
+        startGame();
+        localStorage.lives = lives;
+        localStorage.score = score;
+        localStorage.wave = currentWave;
+    }
 }
-
+function getWaveCount() {
+    var waveCount;
+    switch (Number(currentWave)) {
+        case 1:
+            waveCount = WAVE_1_COUNT;
+            break;
+        case 2:
+            waveCount = WAVE_2_COUNT;
+            break;
+        case 3:
+            waveCount = WAVE_3_COUNT;
+            break;
+    }
+    return waveCount;
+}
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
-    if (SCORE > 2 && HEALTH < 5) {       //TODO: change condition values
+    if (score > 2 && health < 5) {       //TODO: change condition values
         med.draw();
     }
 
@@ -291,7 +303,7 @@ function handleCollisions() {
             player.explode();
             reduceHealth();
             <!--end the game at 0 lives and show game over screen-->
-            if (HEALTH == 0) {
+            if (health == 0) {
                 resetGame();
                 $('#character-select-screen').hide();
                 $('#game').hide();
