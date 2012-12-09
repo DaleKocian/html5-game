@@ -25,7 +25,7 @@ function addCharacterSelectListener() {
                 PLAYER_DOWN = 'dale-down';
                 PLAYER_LEFT = 'dale-left';
                 PLAYER_RIGHT = 'dale-right';
-                player.setSprite(Sprite(PLAYER_UP))
+                player.setSprite(Sprite(PLAYER_UP));
                 break;
             case 'triest':
                 console.log('You selected Triest!');
@@ -33,7 +33,7 @@ function addCharacterSelectListener() {
                 PLAYER_DOWN = 'triest-down';
                 PLAYER_LEFT = 'triest-left';
                 PLAYER_RIGHT = 'triest-right';
-                player.setSprite(Sprite(PLAYER_UP))
+                player.setSprite(Sprite(PLAYER_UP));
                 break;
             case 'leon':
                 console.log('You selected Leon!');
@@ -41,7 +41,7 @@ function addCharacterSelectListener() {
                 PLAYER_DOWN = 'leon-down';
                 PLAYER_LEFT = 'leon-left';
                 PLAYER_RIGHT = 'leon-right';
-                player.setSprite(Sprite(PLAYER_UP))
+                player.setSprite(Sprite(PLAYER_UP));
                 break;
         }
         $('#character-select-screen').hide('slow');
@@ -54,22 +54,22 @@ function addCharacterHoverListener() {
         $('.arrow').removeClass('arrow');
         $(this).parent().addClass('arrow');
         var id = $(this).prop('id');
+        var $playerInfo = $('#playerInfo');
         if(id === 'dale') {
-            $('#playerInfo').html("Name: Dale Kocian<br/>" +
-                "CodeName: Cash<br/>" +
-                "Years of Service: 2 <br/>" +
-                "Story: ");
+            $playerInfo.html('Name: Dale Kocian<br/>' +
+                'CodeName: Cash<br/>' +
+                'Years of Service: 2 <br/>' +
+                'Story: ' + DALES_BIO);
         } else if(id === 'triest') {
-            $('#playerInfo').html("Name: Triest Montel Smart<br/>" +
-                "CodeName: Lil' Trigga<br/>" +
-                "Years of Service: 2 <br/>" +
-                "Story: Recruited from Arkansas by acting President Danny Carroll to assist in operation 'COOL BREEZE'" +
-                ", the offensive strike to rid the United States of the Zombie Rebels");
+            $playerInfo.html('Name: Triest Montel Smart<br/>' +
+                'CodeName: Lil\' Trigga<br/>' +
+                'Years of Service: 2 <br/>' +
+                'Story: ' + TRIEST_BIO);
         } else {
-            $('#playerInfo').html("Name: Leon Knights<br/>" +
-                "CodeName: <br/>" +
-                "Years of Service: 3 <br/>" +
-                "Story: ");
+            $playerInfo.html('Name: Leon Knights<br/>' +
+                'CodeName: <br/>' +
+                'Years of Service: 3 <br/>' +
+                'Story: ' + LEONS_BIO);
         }
     });
 }
