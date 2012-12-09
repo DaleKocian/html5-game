@@ -25,7 +25,7 @@ var currentWave = 1;
 var WAVE_1_COUNT = 50;
 var WAVE_2_COUNT = 75;
 var WAVE_3_COUNT = 125;
-var enemiesToCreate = WAVE_1_COUNT;
+var enemiesToCreate;
 var player = {
     color:"#00A",
     x:PLAYER_START_X,
