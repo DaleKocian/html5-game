@@ -5,6 +5,11 @@ function startGame() {
     }, 1000 / FPS);
 }
 
+function addContinueButton() {
+    var continueButton = $('<div/>').prop('id', 'continue-button').text('Continue Game');
+    $('#start-screen').append(continueButton);
+}
+
 function pauseGame() {
     clearInterval(refreshIntervalId);
 }
@@ -12,6 +17,22 @@ function pauseGame() {
 function resetGame() {
     clearInterval(refreshIntervalId);
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+}
+
+function saveGame() {
+    localStorage.lives = lives;
+    localStorage.score = score;
+    localStorage.wave = currentWave;
+}
+
+function setSavedGameSettings() {
+    lives = localStorage.lives;
+    score = localStorage.score;
+    currentWave = localStorage.wave;
+}
+
+function isStorageExistingAndNotFirstLevel() {
+    return localStorage.lives && localStorage.score && localStorage.wave && Number(localStorage.wave) > 1;
 }
 
 function updateWave() {
@@ -74,170 +95,6 @@ function setZombieSwarmCoefficient() {
         case 3:
             zombieSwarmCoefficient = 0.125;
             break;
-    }
-}
-function Bullet(enemy) {
-    enemy.active = true;
-    determineBulletDirection(enemy, player.prevSpriteName);
-    enemy.width = 3;
-    enemy.height = 3;
-    enemy.color = '#000';
-
-    enemy.inBounds = function () {
-        return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&
-            enemy.y >= 0 && enemy.y <= CANVAS_HEIGHT;
-    };
-
-    enemy.draw = function () {
-        canvas.fillStyle = this.color;
-        canvas.fillRect(this.x, this.y, this.width, this.height);
-    };
-
-    enemy.update = function () {
-        enemy.x += enemy.xVelocity;
-        enemy.y += enemy.yVelocity;
-
-        enemy.active = enemy.active && enemy.inBounds();
-    };
-
-    enemy.explode = function () {
-        this.active = false;
-        // Extra Credit: Add an explosion graphic
-    };
-
-    return enemy;
-}
-
-function determineBulletDirection(enemy, playerPosition) {
-    if (playerPosition == PLAYER_UP) {
-        enemy.xVelocity = 0;
-        enemy.yVelocity = -enemy.speed;
-    } else if (playerPosition == PLAYER_DOWN) {
-        enemy.xVelocity = 0;
-        enemy.yVelocity = enemy.speed;
-    } else if (playerPosition == PLAYER_LEFT) {
-        enemy.xVelocity = -enemy.speed;
-        enemy.yVelocity = 0;
-    } else if (playerPosition == PLAYER_RIGHT) {
-        enemy.xVelocity = enemy.speed;
-        enemy.yVelocity = 0;
-    }
-}
-
-function setEnemyStartingPoint(enemy) {
-    var r = Math.floor(Math.random() * 4) + 1;
-    enemy.x = CANVAS_WIDTH / 4 + Math.random() * CANVAS_WIDTH / 2;
-    enemy.y = CANVAS_HEIGHT / 4 + Math.random() * CANVAS_HEIGHT / 2;
-    switch (r) {
-        case 1:
-            enemy.y = 0;
-            break;
-        case 2:
-            enemy.x = 0;
-            break;
-        case 3:
-            enemy.x = CANVAS_WIDTH;
-            break;
-        default:
-            enemy.y = CANVAS_HEIGHT;
-            break
-    }
-    return enemy;
-}
-
-function Enemy(enemy) {
-    enemy = enemy || {};
-
-    enemy.active = true;
-    enemy.age = Math.floor(Math.random() * 128);
-
-    enemy.color = '#A2B';
-
-    setEnemyStartingPoint(enemy);
-
-    enemy.xVelocity = 0;
-    enemy.yVelocity = 2;
-
-    enemy.width = ENEMY_WIDTH;
-    enemy.height = ENEMY_HEIGHT;
-
-    enemy.inBounds = function () {
-        return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&
-            enemy.y >= 0 && enemy.y <= CANVAS_HEIGHT;
-    };
-
-    enemy.sprite = Sprite('enemy');
-
-    enemy.draw = function () {
-        this.sprite.draw(canvas, this.x, this.y);
-    };
-
-    enemy.update = function () {
-        if (enemy.x > player.x) {
-            --enemy.x;
-        } else if (enemy.x < player.x) {
-            ++enemy.x;
-        }
-        if (enemy.y > player.y) {
-            --enemy.y;
-        } else if (enemy.y < player.y) {
-            ++enemy.y;
-        }
-
-        enemy.xVelocity = 3 * Math.sin(enemy.age * Math.PI / 64);
-
-        enemy.age++;
-
-        enemy.active = enemy.active && enemy.inBounds();
-    };
-
-    enemy.explode = function () {
-        Sound.play('explosion');
-
-        this.active = false;
-        // Extra Credit: Add an explosion graphic
-    };
-
-    return enemy;
-}
-
-function collides(a, b) {
-    return a.x < b.x + b.width &&
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height &&
-        a.y + a.height > b.y;
-}
-
-function handleCollisions() {
-    playerBullets.forEach(function (bullet) {
-        enemies.forEach(function (enemy) {
-            if (collides(bullet, enemy)) {
-                enemy.explode();
-                bullet.active = false;
-                --zombiesToKill;
-                updateScore();
-            }
-        });
-    });
-
-    enemies.forEach(function (enemy) {
-        if (collides(enemy, player)) {
-            enemy.explode();
-            player.explode();
-            reduceHealth();
-            <!--end the game at 0 lives and show game over screen-->
-            if (health < 1) {
-                resetGame();
-                $('#character-select-screen').hide();
-                $('#game').hide();
-                $('#gameOver').show();
-            }
-            --zombiesToKill;
-        }
-    });
-
-    if (collides(player, med)) {
-        increaseHealth();
     }
 }
 
@@ -307,9 +164,7 @@ function update() {
         setZombiesToCreateAndKill();
         setZombieSwarmCoefficient();
         startGame();
-        localStorage.lives = lives;
-        localStorage.score = score;
-        localStorage.wave = currentWave;
+        saveGame();
         startGame();
     }
 }
