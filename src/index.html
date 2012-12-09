@@ -65,6 +65,7 @@ var PLAYER_RIGHT = "player-right";
 var SCORE = 0;
 var HEALTH = 10;
 var STRAFE_MODE = false;
+var SHIFT_UP = true;
 
 
 var player = {
@@ -223,7 +224,6 @@ function resetGame() {
     clearInterval(refreshIntervalId);
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
-
 function update() {
 
     if (keydown.space) {
@@ -231,11 +231,18 @@ function update() {
     }
 
     if (keydown.shift) {
-        STRAFE_MODE = true;
+        if (SHIFT_UP === true) {
+            STRAFE_MODE = true;
+        } else {
+            STRAFE_MODE = false;
+        }
     }
-
-    if (keydown.ctrl) {
-        STRAFE_MODE = false;
+    if (keyup.shift) {
+        if (STRAFE_MODE === true) {
+            SHIFT_UP = false;
+        } else {
+            SHIFT_UP = true;
+        }
     }
 
     if (keydown.left) {
