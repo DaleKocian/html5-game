@@ -1,5 +1,5 @@
 function startGame() {
-    setWave();
+    setEnemiesToCreate();
     refreshIntervalId = setInterval(function () {
         update();
         draw();
@@ -165,7 +165,7 @@ function Enemy(enemy) {
     return enemy;
 }
 
-function setWave() {
+function setEnemiesToCreate() {
     switch(currentWave) {
         case 1:
             enemiesToCreate = WAVE_1_COUNT;
