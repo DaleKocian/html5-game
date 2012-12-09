@@ -9,6 +9,7 @@
     <script language="javascript" src="js/util.js" type="text/javascript"></script>
     <script language="javascript" src="js/sprite.js" type="text/javascript"></script>
     <script language="javascript" src="js/sound.js" type="text/javascript"></script>
+    <script language="javascript" src="js/player.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="start-screen">
@@ -67,24 +68,39 @@ var HEALTH = 10;
 var STRAFE_MODE = false;
 var SHIFT_UP = true;
 
-
+var playerBullets = [];
 var player = {
-    color:"#00A",
-    x:635,
-    y:343.5,
-    width:38,
-    height:53,
-    draw:function () {
+    color: "#00A",
+    x: 635,
+    y: 343.5,
+    width: 38,
+    height: 53,
+    prevSpriteName: null,
+    sprite: null,
+    draw: function () {
         canvas.fillStyle = this.color;
         canvas.fillRect(this.x, this.y, this.width, this.height);
+    },
+    setWidth: function (width) {
+        this.width = width;
+        return this;
+    },
+    setHeight: function (height) {
+        this.height = height;
+        return this;
+    },
+    setPreviousSpriteName: function (name) {
+        this.prevSpriteName = name;
+        return this;
+    },
+    setSprite: function (sprite) {
+        this.sprite = sprite;
+        return this;
     }
 };
-
-var playerBullets = [];
-
 function Bullet(I) {
     I.active = true;
-    determineBulletDirection(I, player.oldSprite);
+    determineBulletDirection(I, player.prevSpriteName);
     I.width = 3;
     I.height = 3;
     I.color = "#000";
@@ -231,64 +247,40 @@ function update() {
     }
 
     if (keydown.shift) {
-        if (SHIFT_UP === true) {
-            STRAFE_MODE = true;
-        } else {
-            STRAFE_MODE = false;
-        }
+        STRAFE_MODE = SHIFT_UP ? true : false;
     }
+
     if (keyup.shift) {
-        if (STRAFE_MODE === true) {
-            SHIFT_UP = false;
-        } else {
-            SHIFT_UP = true;
-        }
+        SHIFT_UP = STRAFE_MODE ? false : true;
     }
 
     if (keydown.left) {
         player.x -= 5;
-        if (player.oldSprite !== PLAYER_LEFT && !STRAFE_MODE) {
-            player.sprite = Sprite(PLAYER_LEFT);
-            player.width = 53;
-            player.height = 38;
-            player.oldSprite = PLAYER_LEFT;
+        if (player.prevSpriteName !== PLAYER_LEFT && !STRAFE_MODE) {
+            player.setSprite(Sprite(PLAYER_LEFT)).setWidth(53).setHeight(38).setPreviousSpriteName(PLAYER_LEFT);
         }
     }
 
     if (keydown.right) {
         player.x += 5;
-        if (player.oldSprite !== PLAYER_RIGHT && !STRAFE_MODE) {
-            player.sprite = Sprite(PLAYER_RIGHT);
-            player.width = 53;
-            player.height = 38;
-            player.oldSprite = PLAYER_RIGHT;
+        if (player.prevSpriteName !== PLAYER_RIGHT && !STRAFE_MODE) {
+            player.setSprite(Sprite(PLAYER_RIGHT)).setWidth(53).setHeight(38).setPreviousSpriteName(PLAYER_RIGHT);
         }
     }
 
     if (keydown.up) {
         player.y -= 5;
-        if (player.oldSprite !== PLAYER_UP && !STRAFE_MODE) {
-            player.sprite = Sprite(PLAYER_UP);
-            player.width = 38;
-            player.height = 53;
-            player.oldSprite = PLAYER_UP;
+        if (player.prevSpriteName !== PLAYER_UP && !STRAFE_MODE) {
+            player.setSprite(Sprite(PLAYER_UP)).setWidth(35).setHeight(53).setPreviousSpriteName(PLAYER_UP);
         }
     }
 
     if (keydown.down) {
         player.y += 5;
-        if (player.oldSprite !== PLAYER_DOWN && !STRAFE_MODE) {
-            player.sprite = Sprite(PLAYER_DOWN);
-            player.width = 38;
-            player.height = 53;
-            player.oldSprite = PLAYER_DOWN;
+        if (player.prevSpriteName !== PLAYER_DOWN && !STRAFE_MODE) {
+            player.setSprite(Sprite(PLAYER_DOWN)).setWidth(38).setHeight(53).setPreviousSpriteName(PLAYER_DOWN);
         }
-
-//        if(keydown.down && keydown.right){
-//
-//        }
     }
-
 
 
     player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
@@ -421,7 +413,7 @@ $('#resume-pause').toggle(function () {
     startGame();
     $(this).text('Pause');
 });
-$('body').keypress(function() {
+$('body').keypress(function () {
     if (keydown.p) {
         var $el = $('#resume-pause');
         if ($el.text() === 'Resume') {
