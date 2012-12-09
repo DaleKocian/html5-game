@@ -27,10 +27,11 @@ var PLAYER_WIDTH = 38;
 var PLAYER_HEIGHT = 53;
 var PLAYER_START_X = 635;
 var PLAYER_START_Y = 343.5;
-var WAVE_1_COUNT = 1;
+var WAVE_1_COUNT = 50;
 var WAVE_2_COUNT = 75;
 var WAVE_3_COUNT = 125;
-var enemiesToCreate;
+var zombiesToKill;
+var zombieSwarmCoefficient = .05;
 var player = {
     color: "#00A",
     x: PLAYER_START_X,

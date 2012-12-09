@@ -19,7 +19,7 @@ $(function () {
         $(this).parent().hide("slow");
         $('#game').show("slow");
         setupVarsAndGameBar();
-        setEnemiesToCreate();
+        setZombiesToKill();
         startGame();
     });
 
@@ -35,7 +35,7 @@ $(function () {
         }
         $('#character-select-screen').hide('slow');
         $('#game').show('slow');
-        setEnemiesToCreate();
+        setZombiesToKill();
         startGame();
     });
     $('#resume-pause').toggle(function () {

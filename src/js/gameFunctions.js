@@ -168,8 +168,8 @@ function Enemy(enemy) {
     return enemy;
 }
 
-function setEnemiesToCreate() {
-    enemiesToCreate = getWaveCount();
+function setZombiesToKill() {
+    zombiesToKill = getWaveCount();
 }
 
 function update() {
@@ -234,14 +234,13 @@ function update() {
 
     handleCollisions();
 
-    if (Math.random() < 0.05 && enemiesToCreate > 0) {
+    if (Math.random() < zombieSwarmCoefficient) {
         enemies.push(Enemy());
-        enemiesToCreate--;
     }
     if (score === getWaveCount()) {
         pauseGame();
         updateWave();
-        setEnemiesToCreate();
+        setZombiesToKill();
         startGame();
         localStorage.lives = lives;
         localStorage.score = score;
@@ -292,7 +291,11 @@ function handleCollisions() {
             if (collides(bullet, enemy)) {
                 enemy.explode();
                 bullet.active = false;
+                zombiesToKill--;
                 updateScore();
+                if (zombiesToKill <= 0) {
+                    bringNewWave();
+                }
             }
         });
     });
@@ -309,11 +312,33 @@ function handleCollisions() {
                 $('#game').hide();
                 $('#gameOver').show();
             }
+            zombiesToKill--;
+            if (zombiesToKill <= 0) {
+                bringNewWave();
+            }
         }
     });
 
     if (collides(player, med)) {
         increaseHealth();
+    }
+
+    function bringNewWave() {
+        if ($('#wave').text() == 'Wave 1') {
+            alert('Wave1 complete placeholder');
+            $('#wave').text('Wave 2');
+            zombieSwarmCoefficient = 0.08;
+            zombiesToKill = WAVE_2_COUNT;
+        } else if ($('#wave').text() == 'Wave 2') {
+            alert('Wave2 complete placeholder');
+            alert('Wave 3');
+            $('#wave').text('Wave 3');
+            zombieSwarmCoefficient = 0.125;
+            zombiesToKill = WAVE_3_COUNT;
+        } else if ($('#wave').text() == 'Wave 3') {
+            alert('Wave3 complete placeholder');
+            $('#wave').text('END');
+        }
     }
 
 }
