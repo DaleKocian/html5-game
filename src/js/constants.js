@@ -4,7 +4,7 @@ var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stand
     'and he doesn\'t let his personal life get in the way of his mission. He is often a hero in the ' +
     'making on the verge of doing something great, he is miss understood at times but he always pulls threw.';
 var LEONS_BIO = 'The paladin calls upon his holy light to heal the wounds of himself and others.';
-var TRIEST_BIO = 'The Warrior King was an Eternal Champion sword and sorcery character.';
+var TRIEST_BIO = "Name: Triest Montel Smart";
 var PLAYER_UP = 'player-up';
 var PLAYER_DOWN = 'player-down';
 var PLAYER_LEFT = 'player-left';
