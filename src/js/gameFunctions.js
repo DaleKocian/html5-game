@@ -1,4 +1,5 @@
 function startGame() {
+    setWave();
     refreshIntervalId = setInterval(function () {
         update();
         draw();
