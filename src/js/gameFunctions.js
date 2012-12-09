@@ -73,12 +73,14 @@ function setupVarsAndGameBar() {
     canvas = canvasElement.get(0).getContext('2d');
     CANVAS_WIDTH = canvasElement.attr('width');
     CANVAS_HEIGHT = canvasElement.attr('height');
+    updateMenu();
+}
+function updateMenu() {
     $('#lives').find('span').text(lives);
     $('#score').find('span').text(score);
     $('#health').find('span').text(health);
     $('#wave').find('span').text(currentWave);
 }
-
 function setZombieSwarmCoefficient() {
     zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[currentWave-1];
 }
