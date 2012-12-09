@@ -1,8 +1,8 @@
 var FPS = 30;
-var DALES_BIO = 'THE WARRIOR IS THE LOYAL SOLDIER, THE MAN THAT STANDS UP FOR WHAT IS RIGHT.' +
-    'HE WARRIOR IS THE GUY THAT GETS THINGS DONE HIS OWN WAY. THE WARRIOR HAS NO TIME FOR CHILDISH GAMES, ' +
-    'BUT HE DOESN\'T LET HIS PERSONAL LIFE GET IN THE WAY OF HIS MISSION. THE WARRIOR IS OFTEN A HERO IN THE ' +
-    'MAKING ON THE VERGE OF DOING SOMETHING GREAT, A WARRIOR IS MISS UNDERSTOOD AT TIMES BUT HE ALWAYS PULLS THREW.'
+var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stands up for what is right.' +
+    'he is the guy that gets things done his own way. He has no time for childish games, ' +
+    'but he doesn\'t let his personal life get in the way of his mission. He is often a hero in the ' +
+    'making on the verge of doing something great, he is miss understood at times but he always pulls threw.'
 var LEONS_BIO = 'The paladin calls upon his holy light to heal the wounds of himself and others.';
 var TRIEST_BIO = 'The Warrior King was an Eternal Champion sword and sorcery character.';
 var PLAYER_UP = 'player-up';
