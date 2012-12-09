@@ -32,6 +32,26 @@ function increaseHealth() {
     $('#health span').text(++health);
 }
 
+function getWaveCount() {
+    var waveCount;
+    switch (Number(currentWave)) {
+        case 1:
+            waveCount = WAVE_1_COUNT;
+            break;
+        case 2:
+            waveCount = WAVE_2_COUNT;
+            break;
+        case 3:
+            waveCount = WAVE_3_COUNT;
+            break;
+    }
+    return waveCount;
+}
+
+function setZombiesToCreateAndKill() {
+    zombiesToCreate = zombiesToKill = getWaveCount();
+}
+
 function setupVarsAndGameBar() {
     canvasElement = $('#canvasBg');
     canvas = canvasElement.get(0).getContext('2d');
@@ -43,6 +63,19 @@ function setupVarsAndGameBar() {
     $('#wave span').text(currentWave);
 }
 
+function setZombieSwarmCoefficient() {
+    switch (Number(currentWave)) {
+        case 1:
+            zombieSwarmCoefficient = .05;
+            break;
+        case 2:
+            zombieSwarmCoefficient = 0.08;
+            break;
+        case 3:
+            zombieSwarmCoefficient = 0.125;
+            break;
+    }
+}
 function Bullet(enemy) {
     enemy.active = true;
     determineBulletDirection(enemy, player.prevSpriteName);
@@ -168,12 +201,44 @@ function Enemy(enemy) {
     return enemy;
 }
 
-function setZombiesToCreate() {
-    zombiesToCreate = getWaveCount();
+function collides(a, b) {
+    return a.x < b.x + b.width &&
+        a.x + a.width > b.x &&
+        a.y < b.y + b.height &&
+        a.y + a.height > b.y;
 }
 
-function setZombiesToKill() {
-    zombiesToKill = getWaveCount();
+function handleCollisions() {
+    playerBullets.forEach(function (bullet) {
+        enemies.forEach(function (enemy) {
+            if (collides(bullet, enemy)) {
+                enemy.explode();
+                bullet.active = false;
+                --zombiesToKill;
+                updateScore();
+            }
+        });
+    });
+
+    enemies.forEach(function (enemy) {
+        if (collides(enemy, player)) {
+            enemy.explode();
+            player.explode();
+            reduceHealth();
+            <!--end the game at 0 lives and show game over screen-->
+            if (health < 1) {
+                resetGame();
+                $('#character-select-screen').hide();
+                $('#game').hide();
+                $('#gameOver').show();
+            }
+            --zombiesToKill;
+        }
+    });
+
+    if (collides(player, med)) {
+        increaseHealth();
+    }
 }
 
 function update() {
@@ -194,23 +259,17 @@ function update() {
         if (player.prevSpriteName !== PLAYER_LEFT && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_LEFT)).setWidth(53).setHeight(38).setPreviousSpriteName(PLAYER_LEFT);
         }
-    }
-
-    if (keydown.right) {
+    } else if (keydown.right) {
         player.x += 5;
         if (player.prevSpriteName !== PLAYER_RIGHT && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_RIGHT)).setWidth(53).setHeight(38).setPreviousSpriteName(PLAYER_RIGHT);
         }
-    }
-
-    if (keydown.up) {
+    } else if (keydown.up) {
         player.y -= 5;
         if (player.prevSpriteName !== PLAYER_UP && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_UP)).setWidth(38).setHeight(53).setPreviousSpriteName(PLAYER_UP);
         }
-    }
-
-    if (keydown.down) {
+    } else if (keydown.down) {
         player.y += 5;
         if (player.prevSpriteName !== PLAYER_DOWN && !strafeModeEnabled) {
             player.setSprite(Sprite(PLAYER_DOWN)).setWidth(38).setHeight(53).setPreviousSpriteName(PLAYER_DOWN);
@@ -240,13 +299,13 @@ function update() {
 
     if (Math.random() < zombieSwarmCoefficient && zombiesToCreate > 0) {
         enemies.push(Enemy());
-        zombiesToCreate--;
+        --zombiesToCreate;
     }
-    if (zombiesToKill === 0) {
+    if (zombiesToKill < 1) {
         pauseGame();
         updateWave();
-        setZombiesToCreate();
-        setZombiesToKill();
+        setZombiesToCreateAndKill();
+        setZombieSwarmCoefficient();
         startGame();
         localStorage.lives = lives;
         localStorage.score = score;
@@ -254,21 +313,7 @@ function update() {
         startGame();
     }
 }
-function getWaveCount() {
-    var waveCount;
-    switch (Number(currentWave)) {
-        case 1:
-            waveCount = WAVE_1_COUNT;
-            break;
-        case 2:
-            waveCount = WAVE_2_COUNT;
-            break;
-        case 3:
-            waveCount = WAVE_3_COUNT;
-            break;
-    }
-    return waveCount;
-}
+
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
@@ -283,63 +328,4 @@ function draw() {
     enemies.forEach(function (enemy) {
         enemy.draw();
     });
-}
-
-function collides(a, b) {
-    return a.x < b.x + b.width &&
-        a.x + a.width > b.x &&
-        a.y < b.y + b.height &&
-        a.y + a.height > b.y;
-}
-
-function handleCollisions() {
-    playerBullets.forEach(function (bullet) {
-        enemies.forEach(function (enemy) {
-            if (collides(bullet, enemy)) {
-                enemy.explode();
-                bullet.active = false;
-                --zombiesToKill;
-                updateScore();
-            }
-        });
-    });
-
-    enemies.forEach(function (enemy) {
-        if (collides(enemy, player)) {
-            enemy.explode();
-            player.explode();
-            reduceHealth();
-            <!--end the game at 0 lives and show game over screen-->
-            if (health == 0) {
-                resetGame();
-                $('#character-select-screen').hide();
-                $('#game').hide();
-                $('#gameOver').show();
-            }
-            --zombiesToKill;
-        }
-    });
-
-    if (collides(player, med)) {
-        increaseHealth();
-    }
-
-    function bringNewWave() {
-        if ($('#wave').text() == 'Wave 1') {
-            alert('Wave1 complete placeholder');
-            $('#wave').text('Wave 2');
-            zombieSwarmCoefficient = 0.08;
-            zombiesToKill = WAVE_2_COUNT;
-        } else if ($('#wave').text() == 'Wave 2') {
-            alert('Wave2 complete placeholder');
-            alert('Wave 3');
-            $('#wave').text('Wave 3');
-            zombieSwarmCoefficient = 0.125;
-            zombiesToKill = WAVE_3_COUNT;
-        } else if ($('#wave').text() == 'Wave 3') {
-            alert('Wave3 complete placeholder');
-            $('#wave').text('END');
-        }
-    }
-
 }
