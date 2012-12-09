@@ -37,10 +37,8 @@ body {
 
 #canvasBg {
     display: block;
-    background: #ffffff;
     margin: 0 auto;
-    background: url(../img/GameBackground.jpg);
-    background-repeat: no-repeat;
+    background: #ffffff url(../img/GameBackground.jpg) no-repeat;
 }
 
 #start-screen, #character-select-screen {
@@ -51,13 +49,12 @@ body {
     background-color: #fff;
 }
 
-#character-select-screen {
-
+#start-screen {
+    background: url(../img/Post-Apocalyptic-Cityscape.jpg) no-repeat;
 }
 
-#start-screen {
-    background: url(../img/Post-Apocalyptic-Cityscape.jpg);
-    background-repeat: no-repeat;
+#character-select-screen {
+    background-color: #000;
 }
 
 #character-select-screen {
@@ -66,18 +63,24 @@ body {
 
 #character-select-screen h1 {
     text-align: center;
+    color: #fff;
+    margin-bottom: 0;
 }
 
-#character-select-screen img {
+#charcterTable img {
     cursor: pointer;
+    width: 128px;
+    height: 277px;
+    clear: both;
 }
 
-#dale {
-    float: left;
+#charcterTable {
+    width: 100%;
 }
 
-#triest {
-    float: right;
+#charcterTable td {
+    text-align: center;
+    vertical-align: top;
 }
 
 #start-button, #continue-button, #play-again {
@@ -86,10 +89,20 @@ body {
     text-align: center;
     cursor: pointer;
 }
+
 #start-button, #play-again {
     padding-top: 215px;
 }
 
 #start-button:hover, #continue-button:hover, #play-again:hover {
     color: #ff0000;
+}
+#charcterTable div {
+    padding-top: 90px;
+}
+.arrow {
+    width: 128px;
+    height: 277px;
+    background: url(../img/arrow.png) no-repeat 100% 0%;
+    margin: 0 auto;
 }

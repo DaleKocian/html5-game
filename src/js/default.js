@@ -1,5 +1,5 @@
 $(function () {
-    if (isStorageExistingAndNotFirstLevel()) {
+    if(isStorageExistingAndNotFirstLevel()) {
         addContinueButton();
     } else {
         saveGame();
@@ -9,4 +9,8 @@ $(function () {
     addPauseResumeButtonListener();
     addPauseResumeKeyListener();
     addPlayAgainListener();
+    $('#charcterTable').find('img').on('hover', function () {
+        $('.arrow').removeClass('arrow');
+        $(this).parent().addClass('arrow');
+    });
 });
