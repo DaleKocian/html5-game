@@ -14,6 +14,10 @@ var PLAYER_WIDTH = 38;
 var PLAYER_HEIGHT = 53;
 var PLAYER_START_X = 635;
 var PLAYER_START_Y = 343.5;
+var MED_WIDTH = 38;
+var MED_HEIGHT = 53;
+var MED_START_X = 300;
+var MED_START_Y = 200;
 var ZOMBIE_WAVE_SWARM_COEFFICIENT = [0.05, 0.08, 0.125];
 var WAVE_COUNT = [1, 75, 125];
 var CANVAS_WIDTH;
@@ -63,10 +67,10 @@ var player = {
 };
 
 var med = {
-    x: 300,
-    y: 200,
-    width: 38,
-    height: 53,
+    x: MED_START_X,
+    y: MED_START_Y,
+    width: MED_WIDTH,
+    height: MED_HEIGHT,
     prevSpriteName: null,
     sprite: null,
     draw: function () {
