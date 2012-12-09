@@ -1,3 +1,5 @@
+
+
 function addStartScreenButtonListener() {
     $('#start-button').on('click', function () {
         $('#titleScreenMusic').get(0).pause();
@@ -19,12 +21,27 @@ function addCharacterSelectListener() {
         switch (id) {
             case 'dale':
                 console.log('You selected Dale!');
+                PLAYER_UP = 'dale-up';
+                PLAYER_DOWN = 'dale-down';
+                PLAYER_LEFT = 'dale-left';
+                PLAYER_RIGHT = 'dale-right';
+                player.setSprite(Sprite(PLAYER_UP))
                 break;
             case 'triest':
                 console.log('You selected Triest!');
+                PLAYER_UP = 'triest-up';
+                PLAYER_DOWN = 'triest-down';
+                PLAYER_LEFT = 'triest-left';
+                PLAYER_RIGHT = 'triest-right';
+                player.setSprite(Sprite(PLAYER_UP))
                 break;
             case 'leon':
                 console.log('You selected Leon!');
+                PLAYER_UP = 'leon-up';
+                PLAYER_DOWN = 'leon-down';
+                PLAYER_LEFT = 'leon-left';
+                PLAYER_RIGHT = 'leon-right';
+                player.setSprite(Sprite(PLAYER_UP))
                 break;
         }
         $('#character-select-screen').hide('slow');
