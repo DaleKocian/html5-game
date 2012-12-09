@@ -54,19 +54,7 @@ function increaseHealth() {
 }
 
 function getWaveCount() {
-    var waveCount;
-    switch (Number(currentWave)) {
-        case 1:
-            waveCount = WAVE_1_COUNT;
-            break;
-        case 2:
-            waveCount = WAVE_2_COUNT;
-            break;
-        case 3:
-            waveCount = WAVE_3_COUNT;
-            break;
-    }
-    return waveCount;
+    return WAVE_COUNT[currentWave-1];
 }
 
 function setZombiesToCreateAndKill() {
@@ -85,17 +73,7 @@ function setupVarsAndGameBar() {
 }
 
 function setZombieSwarmCoefficient() {
-    switch (Number(currentWave)) {
-        case 1:
-            zombieSwarmCoefficient = .05;
-            break;
-        case 2:
-            zombieSwarmCoefficient = 0.08;
-            break;
-        case 3:
-            zombieSwarmCoefficient = 0.125;
-            break;
-    }
+    zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[currentWave-1];
 }
 
 function update() {

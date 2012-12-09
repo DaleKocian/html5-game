@@ -6,10 +6,20 @@ var PLAYER_RIGHT = 'player-right';
 var MED = 'med';
 var INITIAL_LIVES = 3;
 var INITIAL_SCORE = 0;
-var INITIAL_HEALTH = 1;
+var INITIAL_HEALTH = 1; //TODO:  change to 10
 var INITIAL_WAVE = 1;
+var ENEMY_WIDTH = 32;
+var ENEMY_HEIGHT = 75;
+var PLAYER_WIDTH = 38;
+var PLAYER_HEIGHT = 53;
+var PLAYER_START_X = 635;
+var PLAYER_START_Y = 343.5;
+var ZOMBIE_WAVE_SWARM_COEFFICIENT = [0.05, 0.08, 0.125];
+var WAVE_COUNT = [1, 75, 125];
+var CANVAS_WIDTH;
+var CANVAS_HEIGHT;
 var score = INITIAL_SCORE;
-var health = INITIAL_HEALTH;   //TODO:  change to 10
+var health = INITIAL_HEALTH;
 var lives = INITIAL_LIVES;
 var currentWave = INITIAL_WAVE;
 var strafeModeEnabled = false;
@@ -19,20 +29,9 @@ var enemies = [];
 var playerBullets = [];
 var canvasElement;
 var canvas;
-var CANVAS_WIDTH;
-var CANVAS_HEIGHT;
-var ENEMY_WIDTH = 32;
-var ENEMY_HEIGHT = 75;
-var PLAYER_WIDTH = 38;
-var PLAYER_HEIGHT = 53;
-var PLAYER_START_X = 635;
-var PLAYER_START_Y = 343.5;
-var WAVE_1_COUNT = 1;
-var WAVE_2_COUNT = 75;
-var WAVE_3_COUNT = 125;
 var zombiesToCreate;
 var zombiesToKill;
-var zombieSwarmCoefficient = .05;
+var zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[0];
 var player = {
     color: '#00A',
     x: PLAYER_START_X,
