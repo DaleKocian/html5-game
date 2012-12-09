@@ -44,7 +44,7 @@ body {
 }
 
 #start-screen, #character-select-screen {
-    margin: 0 auto;
+    margin: 10% auto 0;
     z-index: 5;
     width: 800px;
     height: 500px;
