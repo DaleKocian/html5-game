@@ -1,4 +1,5 @@
 function startGame() {
+    setWave();
     refreshIntervalId = setInterval(function () {
         update();
         draw();
@@ -226,8 +227,9 @@ function update() {
 
     handleCollisions();
 
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.05 && enemyWaveCount > 0) {
         enemies.push(Enemy());
+        enemyWaveCount--;
     }
 }
 
