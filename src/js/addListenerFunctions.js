@@ -33,7 +33,7 @@ function addCharacterSelectListener() {
     });
 }
 function addCharacterHoverListener() {
-    $('#charcterTable').find('img').on('hover', function () {
+    $('#characterTable').find('img').on('hover', function () {
         $('.arrow').removeClass('arrow');
         $(this).parent().addClass('arrow');
         var id = $(this).prop('id');
