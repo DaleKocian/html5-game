@@ -185,7 +185,7 @@ function update() {
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
-    if (score > 0 && health < 3) {
+    if (score > 20 && health < 3) {
         MED_START_X = Math.floor(Math.random()*1200);
         MED_START_Y = Math.floor(Math.random()*600);
         healthEnabled = true;

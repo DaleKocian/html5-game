@@ -76,8 +76,8 @@ var player = {
 };
 
 var med = {
-    x: MED_START_X,
-    y: MED_START_Y,
+    x:(Math.floor(Math.random()*1200)),
+    y: (Math.floor(Math.random()*600)),
     width: MED_WIDTH,
     height: MED_HEIGHT,
     prevSpriteName: null,
@@ -92,6 +92,14 @@ var med = {
     },
     setHeight:function (height) {
         this.height = height;
+        return this;
+    },
+    setX:function (x) {
+        this.x = x;
+        return this;
+    },
+    setY:function (y) {
+        this.y = y;
         return this;
     },
     setPreviousSpriteName:function (name) {
