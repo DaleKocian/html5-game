@@ -57,6 +57,11 @@ function addPlayAgainListener() {
     $('#play-again').on('click', function() {
         $(this).closest('#gameOver').hide('slow');
         $('#game').show('slow');
+        score = INITIAL_SCORE;
+        health = INITIAL_HEALTH;
+        lives = INITIAL_LIVES;
+        setZombiesToCreateAndKill();
         resumeGame();
+        debug();
     });
 }

@@ -94,3 +94,23 @@ var med = {
         return this;
     }
 };
+
+var debug = function() {
+    console.log('FPS: ' + FPS);
+    console.log('INITIAL_LIVES: ' + INITIAL_LIVES);
+    console.log('INITIAL_SCORE: ' + INITIAL_SCORE);
+    console.log('INITIAL_HEALTH: ' + INITIAL_SCORE);
+    console.log('CANVAS_WIDTH: ' + CANVAS_WIDTH);
+    console.log('CANVAS_HEIGHT: ' + CANVAS_HEIGHT);
+    console.log('score: ' + score);
+    console.log('health: ' + health);
+    console.log('lives: ' + lives);
+    console.log('currentWave: ' + currentWave);
+    console.log('refreshIntervalId:');
+    console.log(refreshIntervalId);
+    console.log(enemies);
+    console.log(playerBullets);
+    console.log('zombiesToCreate: ' + zombiesToCreate);
+    console.log('zombiesToKill: ' + zombiesToKill);
+    console.log('zombieSwarmCoefficient: ' + zombieSwarmCoefficient);
+}
