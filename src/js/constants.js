@@ -5,6 +5,7 @@ var PLAYER_LEFT = "player-left";
 var PLAYER_RIGHT = "player-right";
 var SCORE = 0;
 var HEALTH = 1;   //TODO:  change to 10
+var LIVES = 3;
 var STRAFE_MODE = false;
 var SHIFT_UP = true;
 var refreshIntervalId;

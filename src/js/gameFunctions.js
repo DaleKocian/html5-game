@@ -13,12 +13,19 @@ function resetGame() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 }
 function updateScore() {
-    SCORE++;
-    $('#score').text("Score: " + SCORE);
+    $('#score span').text(++SCORE);
 }
 function reduceHealth() {
     if (HEALTH > 0) {
-        HEALTH--;
+        $('#health span').text(--HEALTH);
     }
-    $('#health').text("Health: " + HEALTH)
+}
+function setupVarsAndGameBar() {
+    canvasElement = $('#canvasBg');
+    canvas = canvasElement.get(0).getContext("2d");
+    CANVAS_WIDTH = canvasElement.attr('width');
+    CANVAS_HEIGHT = canvasElement.attr('height');
+    $('#lives span').text(LIVES);
+    $('#score span').text(SCORE);
+    $('#health span').text(HEALTH);
 }
