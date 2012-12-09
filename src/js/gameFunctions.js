@@ -34,7 +34,7 @@ function increaseHealth() {
 
 function setupVarsAndGameBar() {
     canvasElement = $('#canvasBg');
-    canvas = canvasElement.get(0).getContext("2d");
+    canvas = canvasElement.get(0).getContext('2d');
     CANVAS_WIDTH = canvasElement.attr('width');
     CANVAS_HEIGHT = canvasElement.attr('height');
     $('#lives span').text(lives);
@@ -48,7 +48,7 @@ function Bullet(enemy) {
     determineBulletDirection(enemy, player.prevSpriteName);
     enemy.width = 3;
     enemy.height = 3;
-    enemy.color = "#000";
+    enemy.color = '#000';
 
     enemy.inBounds = function () {
         return enemy.x >= 0 && enemy.x <= CANVAS_WIDTH &&
@@ -118,7 +118,7 @@ function Enemy(enemy) {
     enemy.active = true;
     enemy.age = Math.floor(Math.random() * 128);
 
-    enemy.color = "#A2B";
+    enemy.color = '#A2B';
 
     setEnemyStartingPoint(enemy);
 
@@ -133,7 +133,7 @@ function Enemy(enemy) {
             enemy.y >= 0 && enemy.y <= CANVAS_HEIGHT;
     };
 
-    enemy.sprite = Sprite("enemy");
+    enemy.sprite = Sprite('enemy');
 
     enemy.draw = function () {
         this.sprite.draw(canvas, this.x, this.y);
@@ -159,13 +159,17 @@ function Enemy(enemy) {
     };
 
     enemy.explode = function () {
-        Sound.play("explosion");
+        Sound.play('explosion');
 
         this.active = false;
         // Extra Credit: Add an explosion graphic
     };
 
     return enemy;
+}
+
+function setZombiesToCreate() {
+    zombiesToCreate = getWaveCount();
 }
 
 function setZombiesToKill() {
@@ -234,17 +238,20 @@ function update() {
 
     handleCollisions();
 
-    if (Math.random() < zombieSwarmCoefficient) {
+    if (Math.random() < zombieSwarmCoefficient && zombiesToCreate > 0) {
         enemies.push(Enemy());
+        zombiesToCreate--;
     }
-    if (score === getWaveCount()) {
+    if (zombiesToKill === 0) {
         pauseGame();
         updateWave();
+        setZombiesToCreate();
         setZombiesToKill();
         startGame();
         localStorage.lives = lives;
         localStorage.score = score;
         localStorage.wave = currentWave;
+        startGame();
     }
 }
 function getWaveCount() {
@@ -291,11 +298,8 @@ function handleCollisions() {
             if (collides(bullet, enemy)) {
                 enemy.explode();
                 bullet.active = false;
-                zombiesToKill--;
+                --zombiesToKill;
                 updateScore();
-                if (zombiesToKill <= 0) {
-                    bringNewWave();
-                }
             }
         });
     });
@@ -312,10 +316,7 @@ function handleCollisions() {
                 $('#game').hide();
                 $('#gameOver').show();
             }
-            zombiesToKill--;
-            if (zombiesToKill <= 0) {
-                bringNewWave();
-            }
+            --zombiesToKill;
         }
     });
 

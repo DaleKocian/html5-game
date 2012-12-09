@@ -8,18 +8,19 @@ $(function () {
         localStorage.wave = currentWave;
     }
     $('#start-button').on('click', function () {
-        $(this).parent().hide("slow");
-        $('#character-select-screen').show("slow");
+        $(this).parent().hide('slow');
+        $('#character-select-screen').show('slow');
         setupVarsAndGameBar();
     });
     $('#continue-button').on('click', function () {
         lives = localStorage.lives;
         score = localStorage.score;
         currentWave = localStorage.wave;
-        $(this).parent().hide("slow");
-        $('#game').show("slow");
+        $(this).parent().hide('slow');
+        $('#game').show('slow');
         setupVarsAndGameBar();
         setZombiesToKill();
+        setZombiesToCreate()
         startGame();
     });
 
@@ -36,6 +37,7 @@ $(function () {
         $('#character-select-screen').hide('slow');
         $('#game').show('slow');
         setZombiesToKill();
+        setZombiesToCreate()
         startGame();
     });
     $('#resume-pause').toggle(function () {

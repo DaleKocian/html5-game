@@ -1,17 +1,17 @@
 var FPS = 30;
-var PLAYER_UP = "player-up";
-var PLAYER_DOWN = "player-down";
-var PLAYER_LEFT = "player-left";
-var PLAYER_RIGHT = "player-right";
-var MED = "med";
-var INTITIAL_LIVES = 3;
-var INTITIAL_SCORE = 0;
-var INTITIAL_HEALTH = 1;
-var INTITIAL_WAVE = 1;
-var score = INTITIAL_SCORE;
-var health = INTITIAL_HEALTH;   //TODO:  change to 10
-var lives = INTITIAL_LIVES;
-var currentWave = INTITIAL_WAVE;
+var PLAYER_UP = 'player-up';
+var PLAYER_DOWN = 'player-down';
+var PLAYER_LEFT = 'player-left';
+var PLAYER_RIGHT = 'player-right';
+var MED = 'med';
+var INITIAL_LIVES = 3;
+var INITIAL_SCORE = 0;
+var INITIAL_HEALTH = 1;
+var INITIAL_WAVE = 1;
+var score = INITIAL_SCORE;
+var health = INITIAL_HEALTH;   //TODO:  change to 10
+var lives = INITIAL_LIVES;
+var currentWave = INITIAL_WAVE;
 var strafeModeEnabled = false;
 var shiftUp = true;
 var refreshIntervalId;
@@ -27,13 +27,14 @@ var PLAYER_WIDTH = 38;
 var PLAYER_HEIGHT = 53;
 var PLAYER_START_X = 635;
 var PLAYER_START_Y = 343.5;
-var WAVE_1_COUNT = 50;
+var WAVE_1_COUNT = 1;
 var WAVE_2_COUNT = 75;
 var WAVE_3_COUNT = 125;
+var zombiesToCreate;
 var zombiesToKill;
 var zombieSwarmCoefficient = .05;
 var player = {
-    color: "#00A",
+    color: '#00A',
     x: PLAYER_START_X,
     y: PLAYER_START_Y,
     width: PLAYER_WIDTH,
