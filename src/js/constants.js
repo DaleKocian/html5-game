@@ -44,6 +44,7 @@ var canvas;
 var zombiesToCreate;
 var zombiesToKill;
 var zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[0];
+var healthEnabled = false;
 var player = {
     color:'#00A',
     x:PLAYER_START_X,
@@ -75,13 +76,13 @@ var player = {
 };
 
 var med = {
-    x:MED_START_X,
-    y:MED_START_Y,
-    width:MED_WIDTH,
-    height:MED_HEIGHT,
-    prevSpriteName:null,
-    sprite:null,
-    draw:function () {
+    x: MED_START_X,
+    y: MED_START_Y,
+    width: MED_WIDTH,
+    height: MED_HEIGHT,
+    prevSpriteName: null,
+    sprite: null,
+    draw: function () {
         canvas.fillStyle = this.backgroundImage;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     },

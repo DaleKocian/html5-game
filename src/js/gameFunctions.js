@@ -57,6 +57,7 @@ function reduceHealth() {
 }
 
 function reduceLives() {
+    pauseGame();
     saveGame();
     $('#game').hide();
     $('#lostLife').show();
@@ -184,8 +185,13 @@ function update() {
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
-    if (score > 2 && health < 5) {       //TODO: change condition values
+    if (score > 0 && health < 3) {
+        MED_START_X = Math.floor(Math.random()*1200);
+        MED_START_Y = Math.floor(Math.random()*600);
+        healthEnabled = true;
         med.draw();
+    } else {
+        healthEnabled = false;
     }
 
     playerBullets.forEach(function (bullet) {

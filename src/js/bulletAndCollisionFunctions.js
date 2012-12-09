@@ -84,7 +84,7 @@ function handleCollisions() {
         }
     });
 
-    if (collides(player, med)) {
+    if (collides(player, med) && healthEnabled) {
         increaseHealth();
     }
 }
