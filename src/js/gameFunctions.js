@@ -29,6 +29,10 @@ function reduceHealth() {
     }
 }
 
+function increaseHealth() {
+    $('#health span').text(++HEALTH);
+}
+
 function setupVarsAndGameBar() {
     canvasElement = $('#canvasBg');
     canvas = canvasElement.get(0).getContext("2d");
@@ -166,7 +170,7 @@ function Enemy(enemy) {
 }
 
 function setEnemiesToCreate() {
-    switch(currentWave) {
+    switch (currentWave) {
         case 1:
             enemiesToCreate = WAVE_1_COUNT;
             break;
@@ -250,6 +254,9 @@ function update() {
 function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
+    if (SCORE > 2 && HEALTH < 5) {       //TODO: change condition values
+        med.draw();
+    }
 
     playerBullets.forEach(function (bullet) {
         bullet.draw();
@@ -292,4 +299,9 @@ function handleCollisions() {
             }
         }
     });
+
+    if (collides(player, med)) {
+        increaseHealth();
+    }
+
 }

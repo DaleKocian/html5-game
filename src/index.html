@@ -35,50 +35,56 @@
     <canvas id="canvasBg" width="1270" height="687">
     </canvas>
     <div class="playerMenuItem" id="score">Score: <span></span></div>
+
     <div class="playerMenuItem" id="lives">Lives: <span></span></div>
     <div class="playerMenuItem" id="health">Health: <span></span></div>
 </div>
 <script type="text/javascript">
-//<![CDATA[
-player.shoot = function () {
-    Sound.play("shoot");
+    //<![CDATA[
+    player.shoot = function () {
+        Sound.play("shoot");
 
-    var bulletPosition = this.gunPoint(player.prevSpriteName);
+        var bulletPosition = this.gunPoint(player.prevSpriteName);
 
-    playerBullets.push(Bullet({
-        speed:5,
-        x:bulletPosition.x,
-        y:bulletPosition.y
-    }));
-};
+        playerBullets.push(Bullet({
+            speed:5,
+            x:bulletPosition.x,
+            y:bulletPosition.y
+        }));
+    };
 
-player.gunPoint = function (playerPosition) {
-    var x = this.x + this.width - 11;
-    var y = (this.y + this.height / 2) + 8;
-    if (playerPosition === PLAYER_UP) {
-        y = ( this.y + this.height / 12 ) - 4;
-    } else if (playerPosition === PLAYER_DOWN) {
-        y = ( this.y + this.height / 12 ) + 44;
-    } else if (playerPosition === PLAYER_RIGHT) {
-        x = (this.x + this.width / 2) + 24;
-    } else if (playerPosition === PLAYER_LEFT) {
-        x = (this.x + this.width / 2) - 26;
-    }
-    return {
-        x: x,
-        y: y
-    }
-};
+    player.gunPoint = function (playerPosition) {
+        var x = this.x + this.width - 11;
+        var y = (this.y + this.height / 2) + 8;
+        if (playerPosition === PLAYER_UP) {
+            y = ( this.y + this.height / 12 ) - 4;
+        } else if (playerPosition === PLAYER_DOWN) {
+            y = ( this.y + this.height / 12 ) + 44;
+        } else if (playerPosition === PLAYER_RIGHT) {
+            x = (this.x + this.width / 2) + 24;
+        } else if (playerPosition === PLAYER_LEFT) {
+            x = (this.x + this.width / 2) - 26;
+        }
+        return {
+            x:x,
+            y:y
+        }
+    };
 
-player.explode = function () {
-    this.active = false;
-    // Extra Credit: Add an explosion graphic and then end the game
-};
+    player.explode = function () {
+        this.active = false;
+        // Extra Credit: Add an explosion graphic and then end the game
+    };
 
-player.setSprite(Sprite(PLAYER_UP)).setPreviousSpriteName(PLAYER_UP).draw = function () {
-    this.sprite.draw(canvas, this.x, this.y);
-};
-//]]>
+    player.setSprite(Sprite(PLAYER_UP)).setPreviousSpriteName(PLAYER_UP).draw = function () {
+        this.sprite.draw(canvas, this.x, this.y);
+    };
+
+    med.setSprite(Sprite(MED)).setPreviousSpriteName(MED).draw = function () {
+        this.sprite.draw(canvas, this.x, this.y);
+    };
+
+    //]]>
 </script>
 </body>
 </html>

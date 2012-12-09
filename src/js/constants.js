@@ -3,6 +3,7 @@ var PLAYER_UP = "player-up";
 var PLAYER_DOWN = "player-down";
 var PLAYER_LEFT = "player-left";
 var PLAYER_RIGHT = "player-right";
+var MED = "med";
 var SCORE = 0;
 var HEALTH = 1;   //TODO:  change to 10
 var LIVES = 3;
@@ -36,6 +37,35 @@ var player = {
     sprite:null,
     draw:function () {
         canvas.fillStyle = this.color;
+        canvas.fillRect(this.x, this.y, this.width, this.height);
+    },
+    setWidth:function (width) {
+        this.width = width;
+        return this;
+    },
+    setHeight:function (height) {
+        this.height = height;
+        return this;
+    },
+    setPreviousSpriteName:function (name) {
+        this.prevSpriteName = name;
+        return this;
+    },
+    setSprite:function (sprite) {
+        this.sprite = sprite;
+        return this;
+    }
+};
+
+var med = {
+    x:300,
+    y:200,
+    width:38,
+    height:53,
+    prevSpriteName:null,
+    sprite:null,
+    draw:function () {
+        canvas.fillStyle = this.backgroundImage;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     },
     setWidth:function (width) {
