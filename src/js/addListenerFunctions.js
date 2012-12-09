@@ -1,17 +1,14 @@
 function addStartScreenButtonListener() {
     $('#start-button').on('click', function () {
+        saveGame();
         $(this).closest('#start-screen').hide('slow');
         $('#character-select-screen').show('slow');
-        setupVarsAndGameBar();
     });
     $('#continue-button').on('click', function () {
-        saveGame();
         setSavedGameSettings();
         $(this).closest('#start-screen').hide('slow');
         $('#game').show('slow');
-        setupVarsAndGameBar();
-        setZombiesToCreateAndKill();
-        startGame();
+        startGame()
     });
 }
 function addCharacterSelectListener() {
@@ -30,8 +27,7 @@ function addCharacterSelectListener() {
         }
         $('#character-select-screen').hide('slow');
         $('#game').show('slow');
-        setZombiesToCreateAndKill();
-        startGame();
+        startGame()
     });
 }
 function addPauseResumeButtonListener() {
@@ -39,7 +35,7 @@ function addPauseResumeButtonListener() {
         pauseGame();
         $(this).text('Resume');
     }, function () {
-        startGame();
+        resumeGame();
         $(this).text('Pause');
     });
 }
@@ -48,7 +44,7 @@ function addPauseResumeKeyListener() {
         if (keydown.p) {
             var $el = $('#resume-pause');
             if ($el.text() === 'Resume') {
-                startGame();
+                resumeGame();
                 $el.text('Pause');
             } else {
                 pauseGame();

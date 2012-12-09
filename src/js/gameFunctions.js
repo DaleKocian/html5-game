@@ -1,4 +1,9 @@
 function startGame() {
+    setupVarsAndGameBar();
+    setZombiesToCreateAndKill();
+    resumeGame();
+}
+function resumeGame() {
     refreshIntervalId = setInterval(function () {
         update();
         draw();
@@ -32,7 +37,7 @@ function setSavedGameSettings() {
 }
 
 function isStorageExistingAndNotFirstLevel() {
-    return localStorage.lives && localStorage.score && localStorage.wave && Number(localStorage.wave) > 1;
+    return localStorage.lives && localStorage.score && localStorage.wave && (Number(localStorage.wave) > 1);
 }
 
 function updateWave() {
@@ -141,9 +146,9 @@ function update() {
         updateWave();
         setZombiesToCreateAndKill();
         setZombieSwarmCoefficient();
-        startGame();
+        resumeGame();
         saveGame();
-        startGame();
+        resumeGame();
     }
 }
 
