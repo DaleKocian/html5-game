@@ -74,6 +74,7 @@ function handleCollisions() {
             if (health < 1) {
                 reduceLives();
                 if (lives < 1) {
+                    pauseZombieSound();
                     resetGame();
                     $('#game').hide();
                     $('#gameOver').show();
@@ -86,7 +87,7 @@ function handleCollisions() {
 
     if (collides(player, med) && healthEnabled) {
         increaseHealth();
-        med.setX(Math.floor(Math.random()*1200));
-        med.setY(Math.floor(Math.random()*600));
+        med.setX(Math.floor(Math.random() * 1200));
+        med.setY(Math.floor(Math.random() * 600));
     }
 }

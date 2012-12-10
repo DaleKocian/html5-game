@@ -21,6 +21,9 @@
 <audio id="titleScreenMusic" controls autoplay loop>
     <source src="sounds/titleScreenMusic.mp3" type="audio/mp3">
 </audio>
+<audio id="zombieSound" loop>
+    <source src="sounds/zombie.mp3" type="audio/mp3">
+</audio>
 <div id="start-screen">
     <div class="spacer"></div>
     <div id="start-button">
@@ -44,17 +47,17 @@
 <div id="character-select-screen">
     <h1>Select Your Character</h1>
     <table id="characterTable">
-    <tr>
-        <td>
-            <div><img id="dale" src="img/dale.png"/></div>
-        </td>
-        <td>
-            <div><img id="leon" src="img/leon.png"/></div>
-        </td>
-        <td>
-            <div><img id="triest" src="img/triest.png"/></div>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <div><img id="dale" src="img/dale.png"/></div>
+            </td>
+            <td>
+                <div><img id="leon" src="img/leon.png"/></div>
+            </td>
+            <td>
+                <div><img id="triest" src="img/triest.png"/></div>
+            </td>
+        </tr>
     </table>
     <div id="playerInfo"></div>
 </div>
@@ -74,27 +77,27 @@
         var bulletPosition = this.gunPoint(player.prevSpriteName);
 
         playerBullets.push(Bullet({
-            speed: 10,
-            x: bulletPosition.x,
-            y: bulletPosition.y
+            speed:10,
+            x:bulletPosition.x,
+            y:bulletPosition.y
         }));
     };
 
     player.gunPoint = function (playerPosition) {
         var x = this.x + this.width - 11;
         var y = (this.y + this.height / 2) + 8;
-        if(playerPosition === PLAYER_UP) {
+        if (playerPosition === PLAYER_UP) {
             y = ( this.y + this.height / 12 ) - 4;
-        } else if(playerPosition === PLAYER_DOWN) {
+        } else if (playerPosition === PLAYER_DOWN) {
             y = ( this.y + this.height / 12 ) + 44;
-        } else if(playerPosition === PLAYER_RIGHT) {
+        } else if (playerPosition === PLAYER_RIGHT) {
             x = (this.x + this.width / 2) + 24;
-        } else if(playerPosition === PLAYER_LEFT) {
+        } else if (playerPosition === PLAYER_LEFT) {
             x = (this.x + this.width / 2) - 26;
         }
         return {
-            x: x,
-            y: y
+            x:x,
+            y:y
         }
     };
 

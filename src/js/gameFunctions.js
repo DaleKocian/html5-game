@@ -3,12 +3,14 @@ function startGame() {
     setZombiesToCreateAndKill();
     setZombieSwarmCoefficient();
     resumeGame();
+    playZombieSound()
 }
 function resumeGame() {
     refreshIntervalId = setInterval(function () {
         update();
         draw();
     }, 1000 / FPS);
+    playZombieSound();
 }
 
 function addContinueButton() {
@@ -18,6 +20,7 @@ function addContinueButton() {
 
 function pauseGame() {
     clearInterval(refreshIntervalId);
+    pauseZombieSound();
 }
 
 function resetGame() {
@@ -75,7 +78,7 @@ function increaseHealth() {
 }
 
 function getWaveCount() {
-    return WAVE_COUNT[currentWave-1];
+    return WAVE_COUNT[currentWave - 1];
 }
 
 function setZombiesToCreateAndKill() {
@@ -98,7 +101,7 @@ function updateMenu() {
 }
 
 function setZombieSwarmCoefficient() {
-    zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[currentWave-1];
+    zombieSwarmCoefficient = ZOMBIE_WAVE_SWARM_COEFFICIENT[currentWave - 1];
 }
 
 function setupPlayerSpriteConstants(name) {
@@ -191,8 +194,8 @@ function draw() {
     canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     player.draw();
     if (score > 20 && health < 3) {
-        MED_START_X = Math.floor(Math.random()*1200);
-        MED_START_Y = Math.floor(Math.random()*600);
+        MED_START_X = Math.floor(Math.random() * 1200);
+        MED_START_Y = Math.floor(Math.random() * 600);
         healthEnabled = true;
         med.draw();
     } else {
@@ -207,3 +210,20 @@ function draw() {
         enemy.draw();
     });
 }
+
+function playZombieSound() {
+    $('#zombieSound').get(0).play();
+}
+
+function playGameplayong() {
+
+}
+
+function playDrinkingSound() {
+
+}
+
+function pauseZombieSound() {
+    $('#zombieSound').get(0).pause();
+}
+
