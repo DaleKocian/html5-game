@@ -21,7 +21,6 @@ function addCharacterSelectListener() {
         $('#character-select-screen').hide('slow');
         $('#game').show('slow');
         startGame();
-        playZombieSound();
     });
 }
 function addCharacterHoverListener() {

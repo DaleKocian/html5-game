@@ -4,13 +4,14 @@ function startGame() {
     setZombieSwarmCoefficient();
     resumeGame();
     playZombieSound()
+    playGameplaySong();
 }
 function resumeGame() {
     refreshIntervalId = setInterval(function () {
         update();
         draw();
     }, 1000 / FPS);
-    playZombieSound();
+    playGameplaySong();
 }
 
 function addContinueButton() {
@@ -215,8 +216,8 @@ function playZombieSound() {
     $('#zombieSound').get(0).play();
 }
 
-function playGameplayong() {
-
+function playGameplaySong() {
+    $('#gameSong').get(0).play();
 }
 
 function playDrinkingSound() {
@@ -225,5 +226,9 @@ function playDrinkingSound() {
 
 function pauseZombieSound() {
     $('#zombieSound').get(0).pause();
+}
+
+function pauseGameplaySong() {
+    $('#gameSong').get(0).pause();
 }
 
