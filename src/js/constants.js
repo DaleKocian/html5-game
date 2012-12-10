@@ -2,7 +2,7 @@ var FPS = 30;
 var DALES_BIO = 'Dale aka "THE WARRIOR" is the loyal soldier, the man that stands up for what is right. ' +
     'He is the guy that gets things done his own way. He has no time for childish games, ' +
     'and he doesn\'t let his personal life get in the way of his mission.';
-var CREDITS = 'This game was brought to your by SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights<div style="margin-top: 50px">Thank You For Playing</div>';
+var CREDITS = 'This game was brought to you by your fellow SADC<br/>Developers:<br/>Dale Kocian<br/>Triest Smart<br/>Leon Knights<div style="margin-top: 50px">Thank You For Playing</div>';
 var LEONS_BIO = 'Hailing from UIW, and previously stationed at Fort Central Mkt, he welcomes any challenge.  He was recruited by leader of the revolution against Zombie Rebels, ' +
     'Cool Breeze, who refuses to accept anything less than victory.';
 var TRIEST_BIO = 'Raised in a military family, Triest is well prepared to fight against' +
