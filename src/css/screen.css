@@ -17,7 +17,12 @@ body {
 
 .playerMenuItem {
     text-align: center;
-    color: #ffffff;
+    color: #91ff05;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 0px;
+    background: -moz-linear-gradient(top, #000 0%, #000);
+    text-shadow: 0 -1px 1px rgba(000, 000, 000, 0.5), 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 #gameName {
