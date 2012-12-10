@@ -88,6 +88,7 @@ function handleCollisions() {
 
     if (collides(player, med) && healthEnabled) {
         increaseHealth();
+//        playDrinkingSound();          //sound not loud enough, and need to play for only a second
         med.setX(Math.floor(Math.random() * 1200));
         med.setY(Math.floor(Math.random() * 600));
     }

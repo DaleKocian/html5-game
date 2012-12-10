@@ -222,7 +222,7 @@ function playGameplaySong() {
 }
 
 function playDrinkingSound() {
-
+    $('#drinkSound').get(0).play();
 }
 
 function pauseZombieSound() {
