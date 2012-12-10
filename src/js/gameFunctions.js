@@ -22,6 +22,7 @@ function addContinueButton() {
 function pauseGame() {
     clearInterval(refreshIntervalId);
     pauseZombieSound();
+    pauseGameplaySong();
 }
 
 function resetGame() {

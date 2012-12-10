@@ -75,6 +75,7 @@ function handleCollisions() {
                 reduceLives();
                 if (lives < 1) {
                     pauseZombieSound();
+                    pauseGameplaySong();
                     resetGame();
                     $('#game').hide();
                     $('#gameOver').show();
