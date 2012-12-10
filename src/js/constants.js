@@ -17,7 +17,7 @@ var MILLISECONDS_PER_SECOND = 1000;
 var NUM_SECONDS_TO_SHOW_CREDITS = 42;
 var INITIAL_LIVES = 3;
 var INITIAL_SCORE = 0;
-var INITIAL_HEALTH = 1; //TODO:  change to 10
+var INITIAL_HEALTH = 5; //TODO:  change to ?
 var INITIAL_WAVE = 1;
 var ENEMY_WIDTH = 38;
 var ENEMY_HEIGHT = 40;
@@ -79,13 +79,13 @@ var player = {
 };
 
 var med = {
-    x:(Math.floor(Math.random()*1200)),
-    y: (Math.floor(Math.random()*600)),
-    width: MED_WIDTH,
-    height: MED_HEIGHT,
-    prevSpriteName: null,
-    sprite: null,
-    draw: function () {
+    x:(Math.floor(Math.random() * 1200)),
+    y:(Math.floor(Math.random() * 600)),
+    width:MED_WIDTH,
+    height:MED_HEIGHT,
+    prevSpriteName:null,
+    sprite:null,
+    draw:function () {
         canvas.fillStyle = this.backgroundImage;
         canvas.fillRect(this.x, this.y, this.width, this.height);
     },
