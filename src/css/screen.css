@@ -44,7 +44,7 @@ body {
 }
 
 #start-screen {
-    background: url(../img/Post-Apocalyptic-Cityscape.jpg) no-repeat;
+    background: url(../img/titleSplash.JPG) no-repeat;
 }
 
 #lostLife {
@@ -78,6 +78,12 @@ body {
     color: #fff;
 }
 
+.heading {
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    font-style: italic;
+}
+
 #characterTable img {
     cursor: pointer;
     width: 128px;
@@ -108,8 +114,8 @@ body {
     font-size: 21px;
     padding: 10px 40px;
     margin-bottom: 25px;
-    background: -moz-linear-gradient(top, #2e2c28 0%, #e01d1d);
-    background: -webkit-gradient(linear, left top, left bottom, from(#2e2c28), to(#e01d1d));
+    background: -moz-linear-gradient(top, #000 0%, #000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#000));
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -125,8 +131,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 21px;
     padding: 10px 20px;
-    background: -moz-linear-gradient(top, #2e2c28 0%, #e01d1d);
-    background: -webkit-gradient(linear, left top, left bottom, from(#2e2c28), to(#e01d1d));
+    background: -moz-linear-gradient(top, #000 0%, #000);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#000));
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -193,5 +199,5 @@ body {
 }
 
 .spacer {
-    height: 200px;
+    height: 100px;
 }
